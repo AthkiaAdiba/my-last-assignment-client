@@ -1,128 +1,124 @@
+import { useState } from 'react';
+import Select from 'react-select';
+import { useEditor, EditorContent } from '@tiptap/react'
+import StarterKit from '@tiptap/starter-kit'
+import { useForm } from 'react-hook-form';
 
 
+const options = [
+    { value: 'dog', label: 'dog' },
+    { value: 'cat', label: 'cat' },
+    { value: 'rabbit', label: 'rabbit' },
+    { value: 'bird', label: 'bird' },
+    { value: 'fish', label: 'fish' },
+    { value: 'horse', label: 'horse' },
+];
+// {...register("category", { required: true })}
 const AddPet = () => {
+    const [selectedOption, setSelectedOption] = useState('');
+    console.log(selectedOption.label)
+
+    // hook form
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm()
+
+    // tiptap
+    const editor = useEditor({
+        extensions: [StarterKit],
+        content: '',
+    });
+
+    // submit function
+    const onSubmit = data => {
+        const content = editor.getText();
+        console.log(content)
+        console.log(data)
+    }
+
     return (
         <div>
-            <div className="bg-[#2095AE] font-barlow mb-16 py-16 px-3 lg:px-24 lg:mt-16">
-                <h2 className="text-4xl font-extrabold text-center mb-5 text-white">Add Tourists Spot Page</h2>
-                <form>
-                    {/* Country and tourists spot name row */}
+            <div className="bg-base-100 shadow-2xl font-barlow mb-16 py-16 px-3 lg:px-24 lg:mt-16">
+                <h2 className="text-4xl font-extrabold text-center mb-5">Add a Pet</h2>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    {/* name and category row */}
                     <div className="md:flex mb-3 lg:mb-8">
                         <div className="form-control md:w-1/2 mb-3 lg:mb-0">
                             <label className="label">
-                                <span className="label-text text-white text-xl font-medium">Country Name</span>
+                                <span className="label-text text-xl font-medium">Pet Category</span>
                             </label>
                             <label className="input-group text-black">
-                                <select type="text" name="countryName" placeholder="Country Name" className="select select-bordered w-full text-gray-400 text-base" required>
-                                    <option className="text-black">Country Name</option>
-                                    <option className="text-black">France</option>
-                                    <option className="text-black">Italy</option>
-                                    <option className="text-black">Spain</option>
-                                    <option className="text-black">England</option>
-                                    <option className="text-black">Netherlands</option>
-                                    <option className="text-black">Switzerland</option>
-                                </select>
-                                {/* <input type="text" name="countryName" placeholder="Country Name" className="input input-bordered w-full" /> */}
+                                <Select
+                                    
+                                    defaultValue={selectedOption}
+                                    onChange={setSelectedOption}
+                                    options={options}
+                                />
+                                {/* {errors.category && <span className="text-red-700">Category is required</span>} */}
                             </label>
                         </div>
                         <div className="form-control md:w-1/2 ml-0 md:ml-4 lg:ml-4">
                             <label className="label">
-                                <span className="label-text text-white text-xl font-medium">Tourists Spot Name</span>
+                                <span className="label-text text-xl font-medium">Pet Name</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="touristsSpotName" placeholder="Tourists Spot Name" className="input input-bordered w-full" required />
+                                <input type="text" placeholder="Pet Name" className="input input-bordered w-full" {...register("petName", { required: true })} />
+                                {errors.petName && <span className="text-red-700">Pet Name is required</span>}
                             </label>
                         </div>
                     </div>
-                    {/* location and average cost row */}
+                    {/* location and age row */}
                     <div className="md:flex mb-3 lg:mb-8">
                         <div className="form-control md:w-1/2 mb-3 lg:mb-0">
                             <label className="label">
-                                <span className="label-text text-white text-xl font-medium">Location</span>
+                                <span className="label-text text-xl font-medium">Pet Location</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="location" placeholder="Location" className="input input-bordered w-full" required />
+                                <input type="text" placeholder="Pet Location" className="input input-bordered w-full" {...register("location", { required: true })} />
+                                {errors.location && <span className="text-red-700">Location is required</span>}
                             </label>
                         </div>
                         <div className="form-control md:w-1/2 ml-0 md:ml-4 lg:ml-4">
                             <label className="label">
-                                <span className="label-text text-white text-xl font-medium">Average Cost</span>
+                                <span className="label-text text-xl font-medium">Pet age</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="cost" placeholder="Average Cost" className="input input-bordered w-full" required />
+                                <input type="number" name="age" placeholder="Pet age" className="input input-bordered w-full" {...register("age", { required: true })} />
+                                {errors.age && <span className="text-red-700">Age is required</span>}
                             </label>
                         </div>
                     </div>
-                    {/* season and travel time row */}
+                    {/* short description and image row */}
                     <div className="md:flex mb-3 lg:mb-8">
                         <div className="form-control md:w-1/2 mb-3 lg:mb-0">
                             <label className="label">
-                                <span className="label-text text-white text-xl font-medium">Season</span>
+                                <span className="label-text text-xl font-medium">Short Description</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="season" placeholder="Season" className="input input-bordered w-full" required />
+                                <textarea placeholder="Short Description" className="textarea textarea-bordered textarea-sm w-full" {...register("shortDescription", { required: true })} ></textarea>
+                                {errors.shortDescription && <span className="text-red-700">Short Description is required</span>}
                             </label>
                         </div>
                         <div className="form-control md:w-1/2 ml-0 md:ml-4 lg:ml-4">
                             <label className="label">
-                                <span className="label-text text-white text-xl font-medium">Travel Time</span>
+                                <span className="label-text text-xl font-medium">Pet Image</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="travelTime" placeholder="Travel Time" className="input input-bordered w-full" required />
+                                <input type="file" className="file-input file-input-bordered w-full" {...register('image', { required: true })} />
+                                {errors.image && <span className="text-red-700">Image is required</span>}
                             </label>
                         </div>
                     </div>
-                    {/* image URL and totalVisitorsPerYear row */}
-                    <div className="md:flex mb-3 lg:mb-8">
-                        <div className="form-control md:w-1/2 mb-3 lg:mb-0">
-                            <label className="label">
-                                <span className="label-text text-white text-xl font-medium">Photo URL</span>
-                            </label>
-                            <label className="input-group">
-                                <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full" required />
-                            </label>
-                        </div>
-                        <div className="form-control md:w-1/2 ml-0 md:ml-4 lg:ml-4">
-                            <label className="label">
-                                <span className="label-text text-white text-xl font-medium">Total Visitors Per Year</span>
-                            </label>
-                            <label className="input-group">
-                                <input type="text" name="visitors" placeholder="Total Visitors Per Year" className="input input-bordered w-full" required />
-                            </label>
-                        </div>
+                    <div className='mb-8 border rounded-lg border-gray-300'>
+                        <label className="label">
+                            <span className="label-text text-xl font-medium">Long Description:</span>
+                        </label>
+                        <EditorContent editor={editor} className='overflow-y-scroll max-h-60' />
                     </div>
-                    {/* user name and email row */}
-                    <div className="md:flex mb-3 lg:mb-8">
-                        <div className="form-control md:w-1/2 mb-3 lg:mb-0">
-                            <label className="label">
-                                <span className="label-text text-white text-xl font-medium">User Email</span>
-                            </label>
-                            <label className="input-group">
-                                <input type="email" name="email" disabled placeholder="User Email" className="input input-bordered w-full" required />
-                            </label>
-                        </div>
-                        <div className="form-control md:w-1/2 ml-0 md:ml-4 lg:ml-4">
-                            <label className="label">
-                                <span className="label-text text-white text-xl font-medium">User Name</span>
-                            </label>
-                            <label className="input-group">
-                                <input type="text" name="userName" disabled placeholder="User Name" className="input input-bordered w-full" required />
-                            </label>
-                        </div>
-                    </div>
-                    {/* short description row */}
-                    <div className="mb-8">
-                        <div className="form-control w-full">
-                            <label className="label">
-                                <span className="label-text text-white text-xl font-medium">Short Description</span>
-                            </label>
-                            <label className="input-group">
-                                <textarea name="description" placeholder="Short Description" className="textarea textarea-bordered textarea-sm w-full" required ></textarea>
-                            </label>
-                        </div>
-                    </div>
-                    <input type="submit" value="Add Tourists Spot" className="btn bg-[#0f2454] text-white text-xl font-medium border-none w-full" />
-
+                    <input type="submit" value="Add Tourists Spot" className="btn bg-[#FF720F] text-white text-xl font-medium border-none w-full" />
                 </form>
             </div>
         </div>
