@@ -75,7 +75,7 @@ const Navbar = () => {
                                         <div>
                                             <ul className="pt-2 pb-4 space-y-1 text-sm">
                                                 <li>
-                                                    <Link onClick={handleLogOut} className="space-x-3 flex items-center">
+                                                    <Link to='/dashboard/addPet' className="space-x-3 flex items-center">
                                                         <MdDashboard className="text-lg"></MdDashboard>
                                                         <p>Dashboard</p>
                                                     </Link>

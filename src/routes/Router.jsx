@@ -5,6 +5,10 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import PetListing from "../pages/PetListing/PetListing";
 import DonationCampaigns from "../pages/DonationCampaigns/DonationCampaigns";
+import Dashboard from "../layout/Dashboard";
+import AddPet from "../pages/Dashboard/AddPet/AddPet";
+import AddedPets from "../pages/Dashboard/AddedPets/AddedPets";
+
 
 
 const router = createBrowserRouter([
@@ -33,6 +37,21 @@ const router = createBrowserRouter([
                 element: <Register></Register>
             }
         ]
+    },
+    {
+        path: 'dashboard',
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: 'addPet',
+                element: <AddPet></AddPet>
+            },
+            {
+                path: 'addedPets',
+                element: <AddedPets></AddedPets>
+            }
+        ]
+        
     }
 ]);
 
