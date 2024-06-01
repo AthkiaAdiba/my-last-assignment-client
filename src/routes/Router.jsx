@@ -8,6 +8,7 @@ import DonationCampaigns from "../pages/DonationCampaigns/DonationCampaigns";
 import Dashboard from "../layout/Dashboard";
 import AddPet from "../pages/Dashboard/AddPet/AddPet";
 import AddedPets from "../pages/Dashboard/AddedPets/AddedPets";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             {
                 path: 'addPet',

@@ -3,15 +3,18 @@ import { AuthContext } from "../../providers/AuthProvider";
 // import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from "react-toastify";
 
 
 const Login = () => {
     const { login, loginWithGoogle, loginWithGithub } = useContext(AuthContext);
-    // const location = useLocation();
-    // const navigate = useNavigate();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || "/";
+    // console.log('state in the location login page', location.state);
 
     const {
         register,
@@ -33,6 +36,7 @@ const Login = () => {
 
                 // navigate after login
                 // navigate(location?.state ? location.state : '/')
+                navigate(from, {replace: true});
             })
             .catch(error => {
                 console.log(error);

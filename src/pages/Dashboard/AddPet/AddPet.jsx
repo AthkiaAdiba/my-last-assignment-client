@@ -3,6 +3,7 @@ import Select from 'react-select';
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2'
 
 
 const options = [
@@ -13,10 +14,12 @@ const options = [
     { value: 'fish', label: 'fish' },
     { value: 'horse', label: 'horse' },
 ];
-// {...register("category", { required: true })}
+
 const AddPet = () => {
     const [selectedOption, setSelectedOption] = useState('');
-    console.log(selectedOption.label)
+    const [selectedOptionError, setSelectedOptionError] = useState('');
+    const [editorError, setEditorError] = useState('');
+    // console.log(selectedOption.value)
 
     // hook form
     const {
@@ -35,6 +38,13 @@ const AddPet = () => {
     // submit function
     const onSubmit = data => {
         const content = editor.getText();
+        if(content === ''){
+            return setEditorError('Long Description is requird')
+        }
+        if (selectedOption === '') {
+            return setSelectedOptionError('Category is requird')
+        }
+        
         console.log(content)
         console.log(data)
     }
@@ -52,12 +62,11 @@ const AddPet = () => {
                             </label>
                             <label className="input-group text-black">
                                 <Select
-                                    
                                     defaultValue={selectedOption}
                                     onChange={setSelectedOption}
                                     options={options}
                                 />
-                                {/* {errors.category && <span className="text-red-700">Category is required</span>} */}
+                                <p className="text-red-700">{selectedOptionError}</p>
                             </label>
                         </div>
                         <div className="form-control md:w-1/2 ml-0 md:ml-4 lg:ml-4">
@@ -117,7 +126,9 @@ const AddPet = () => {
                             <span className="label-text text-xl font-medium">Long Description:</span>
                         </label>
                         <EditorContent editor={editor} className='overflow-y-scroll max-h-60' />
+                        <p className="text-red-700">{editorError}</p>
                     </div>
+                    
                     <input type="submit" value="Add Tourists Spot" className="btn bg-[#FF720F] text-white text-xl font-medium border-none w-full" />
                 </form>
             </div>

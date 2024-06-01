@@ -2,12 +2,15 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from "react-toastify";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 const Register = () => {
+    const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
     const { createUser, updateInformation, logOut } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
 
@@ -27,13 +30,23 @@ const Register = () => {
             .then(result => {
                 // console.log(result.user);
                 const userInformation = result.user;
-                toast.success('Account created successfully');
-                reset();
 
                 // update profile
                 updateInformation(userInformation, name, image)
                     .then(() => {
                         // console.log('profile updated')
+
+                        // save user info to the database
+                        const userInfo = { name, email, role: 'user' }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user added to the database')
+                                    reset();
+                                    toast.success('Account created successfully');
+                                    navigate('/login')
+                                }
+                            })
                     })
                     .catch()
 
