@@ -38,6 +38,7 @@ const AddPet = () => {
     // submit function
     const onSubmit = data => {
         const content = editor.getText();
+        
         if(content === ''){
             return setEditorError('Long Description is requird')
         }

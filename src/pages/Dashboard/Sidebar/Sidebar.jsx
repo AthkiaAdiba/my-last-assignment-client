@@ -2,9 +2,16 @@ import { RiMenuFill } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
+    const role = 'admin';
     const links = <>
-        <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/addPet'>Add a pet</NavLink>
-        <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/addedPets'>My added pets</NavLink>
+        {role === 'admin' ? <>
+            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/users'>Users</NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/allPets'>All Pets</NavLink>
+        </> :
+            <>
+                <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/addPet'>Add a pet</NavLink>
+                <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/addedPets'>My added pets</NavLink>
+            </>}
     </>
     return (
         <div>

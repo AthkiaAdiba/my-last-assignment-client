@@ -37,7 +37,7 @@ const Register = () => {
                         // console.log('profile updated')
 
                         // save user info to the database
-                        const userInfo = { name, email, role: 'user' }
+                        const userInfo = { name, email, image, role: 'user' }
                         axiosPublic.post('/users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {

@@ -1,17 +1,18 @@
-import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
-// import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from "react-toastify";
+import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 const Login = () => {
-    const { login, loginWithGoogle, loginWithGithub } = useContext(AuthContext);
+    const { login, loginWithGoogle, loginWithGithub } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
+
 
     const from = location.state?.from?.pathname || "/";
     // console.log('state in the location login page', location.state);
@@ -36,7 +37,7 @@ const Login = () => {
 
                 // navigate after login
                 // navigate(location?.state ? location.state : '/')
-                navigate(from, {replace: true});
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error);
@@ -51,10 +52,23 @@ const Login = () => {
         loginWithGoogle()
             // eslint-disable-next-line no-unused-vars
             .then(result => {
-                // console.log(result.user)
-                toast.success('You have logged in successfully');
-                // navigate(location?.state ? location.state : '/')
-
+                console.log(result.user)
+                const userInfo = {
+                    name: result.user?.displayName,
+                    email: result.user?.email,
+                    image: result.user?.photoURL,
+                    role: 'user'
+                }
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data.insertedId) {
+                            console.log('user added to the database')
+                            toast.success('You have logged in successfully');
+                            reset();
+                            navigate(from, { replace: true });
+                        }
+                    })
             })
             .catch(error => {
                 console.log(error)
@@ -66,7 +80,21 @@ const Login = () => {
         loginWithGithub()
             .then(result => {
                 console.log(result.user)
-                toast.success('You have logged in successfully');
+                const userInfo = {
+                    name: result.user?.displayName,
+                    email: result.user?.email,
+                    image: result.user?.photoURL,
+                    role: 'user'
+                }
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            console.log('user added to the database')
+                            toast.success('You have logged in successfully');
+                            reset();
+                            navigate(from, { replace: true });
+                        }
+                    })
             })
             .catch(error => {
                 console.error(error)
