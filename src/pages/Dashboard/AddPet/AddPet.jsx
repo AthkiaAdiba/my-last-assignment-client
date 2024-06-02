@@ -4,6 +4,11 @@ import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2'
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
+import useAuth from '../../../hooks/useAuth';
 
 
 const options = [
@@ -15,10 +20,17 @@ const options = [
     { value: 'horse', label: 'horse' },
 ];
 
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
 const AddPet = () => {
+    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
+    const {user} = useAuth();
     const [selectedOption, setSelectedOption] = useState('');
     const [selectedOptionError, setSelectedOptionError] = useState('');
     const [editorError, setEditorError] = useState('');
+    const [startDate, setStartDate] = useState(new Date());
     // console.log(selectedOption.value)
 
     // hook form
@@ -36,18 +48,55 @@ const AddPet = () => {
     });
 
     // submit function
-    const onSubmit = data => {
+    const onSubmit = async (data) => {
         const content = editor.getText();
-        
-        if(content === ''){
+
+        if (content === '') {
             return setEditorError('Long Description is requird')
         }
         if (selectedOption === '') {
             return setSelectedOptionError('Category is requird')
         }
-        
-        console.log(content)
-        console.log(data)
+
+        // image upload to imgbb and then get an url
+        const imageFile = { image: data.image[0] }
+        const res = await axiosPublic.post(image_hosting_api, imageFile, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        })
+        if (res.data.success) {
+            // now send the menu item to the server with the image
+            const pet = {
+                pet_name: data.petName,
+                pet_category: selectedOption.value,
+                pet_image: res.data.data.display_url,
+                pet_age: data.age,
+                pet_location: data.location,
+                short_description: data.shortDescription,
+                long_description: content,
+                date: startDate,
+                adopted: false,
+                user_name: user?.displayName,
+                user_email: user?.email
+            }
+            console.log(pet)
+            // post menuItem
+            const petRes = await axiosSecure.post('/pets', pet)
+            console.log(petRes.data)
+            if (petRes.data.insertedId) {
+                // show success popup
+                reset();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${data.name} is added to the pets.`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+        console.log('with image url', res.data)
     }
 
     return (
@@ -112,6 +161,15 @@ const AddPet = () => {
                                 {errors.shortDescription && <span className="text-red-700">Short Description is required</span>}
                             </label>
                         </div>
+                        <br />
+                        {/* for date */}
+                        <div>
+                            <label className="label">
+                                <span className="label-text font-medium text-xl text-black">Pick a Date:</span>
+                            </label>
+                            <DatePicker className=" ml-1 p-2 border-2 rounded-md text-black text-xl"
+                            selected={startDate} onChange={(date) => setStartDate(date)} />
+                        </div>
                         <div className="form-control md:w-1/2 ml-0 md:ml-4 lg:ml-4">
                             <label className="label">
                                 <span className="label-text text-xl font-medium">Pet Image</span>
@@ -129,8 +187,8 @@ const AddPet = () => {
                         <EditorContent editor={editor} className='overflow-y-scroll max-h-60' />
                         <p className="text-red-700">{editorError}</p>
                     </div>
-                    
-                    <input type="submit" value="Add Tourists Spot" className="btn bg-[#FF720F] text-white text-xl font-medium border-none w-full" />
+
+                    <input type="submit" value="Add Pet" className="btn bg-[#FF720F] text-white text-xl font-medium border-none w-full" />
                 </form>
             </div>
         </div>

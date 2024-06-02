@@ -46,6 +46,7 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
+            // users routes
             {
                 path: 'addPet',
                 element: <PrivateRoute><AddPet></AddPet></PrivateRoute>
