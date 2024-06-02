@@ -4,17 +4,19 @@ import { AuthContext } from "../../../providers/AuthProvider";
 import { MdLogout } from "react-icons/md";
 import logo from '../../../assets/logo.webp'
 import { MdDashboard } from "react-icons/md";
+import useAdmin from "../../../hooks/useAdmin";
 
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
     // const { toggleTheme, theme } = useTheme();
 
     const navLinks = <>
         <NavLink className={({ isActive }) => isActive ? 'underline mr-4 text-[#FF720F]' : 'text-black mr-4'} to='/'>Home</NavLink>
         <NavLink className={({ isActive }) => isActive ? 'underline mr-4 text-[#FF720F]' : 'text-black dark:text-white mr-4'} to='/donationCampaigns'>Donation Campaigns</NavLink>
         <NavLink className={({ isActive }) => isActive ? 'underline mr-4 text-[#FF720F]' : 'text-black dark:text-white mr-4'} to='/petListing'>Pet Listing</NavLink>
-        
+
         {
             user && <>
                 {/* <NavLink className={({ isActive }) => isActive ? 'underline mr-4 text-[#9B804E]' : 'mr-4 text-[#3D3931] dark:text-white'} to='/myBookings'>My Bookings</NavLink> */}
@@ -68,18 +70,20 @@ const Navbar = () => {
                                 </summary>
                                 <ul className="shadow menu dropdown-content z-[1] rounded-full w-52">
                                     <div className="h-full p-1 space-y-2 bg-[#FF720F] text-white">
-                                        {/* <div className="items-center p-2 space-x-4">
-                                            <h2 className="text-lg font-semibold text-center">{user.displayName}</h2>
-                                            <p>{user.email}</p>
-                                        </div> */}
                                         <div>
                                             <ul className="pt-2 pb-4 space-y-1 text-sm">
-                                                <li>
+                                                {user && isAdmin && <li>
+                                                    <Link to='/dashboard/users' className="space-x-3 flex items-center">
+                                                        <MdDashboard className="text-lg"></MdDashboard>
+                                                        <p>Dashboard</p>
+                                                    </Link>
+                                                </li>}
+                                                {user && !isAdmin && <li>
                                                     <Link to='/dashboard/addPet' className="space-x-3 flex items-center">
                                                         <MdDashboard className="text-lg"></MdDashboard>
                                                         <p>Dashboard</p>
                                                     </Link>
-                                                </li>
+                                                </li>}
                                                 <li>
                                                     <Link onClick={handleLogOut} className="space-x-3 flex items-center">
                                                         <MdLogout className="text-lg"></MdLogout>

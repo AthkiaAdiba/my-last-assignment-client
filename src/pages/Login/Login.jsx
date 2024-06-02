@@ -53,6 +53,7 @@ const Login = () => {
             // eslint-disable-next-line no-unused-vars
             .then(result => {
                 console.log(result.user)
+                navigate(from, { replace: true });
                 const userInfo = {
                     name: result.user?.displayName,
                     email: result.user?.email,
@@ -80,6 +81,8 @@ const Login = () => {
         loginWithGithub()
             .then(result => {
                 console.log(result.user)
+                // redirect
+                navigate(from, { replace: true });
                 const userInfo = {
                     name: result.user?.displayName,
                     email: result.user?.email,
