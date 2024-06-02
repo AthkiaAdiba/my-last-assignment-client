@@ -11,6 +11,7 @@ import AddedPets from "../pages/Dashboard/AddedPets/AddedPets";
 import PrivateRoute from "./PrivateRoute";
 import Users from "../pages/Dashboard/Users/Users";
 import AllPets from "../pages/Dashboard/AllPets/AllPets";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -47,21 +48,21 @@ const router = createBrowserRouter([
         children: [
             {
                 path: 'addPet',
-                element: <AddPet></AddPet>
+                element: <PrivateRoute><AddPet></AddPet></PrivateRoute>
             },
             {
                 path: 'addedPets',
-                element: <AddedPets></AddedPets>
+                element: <PrivateRoute><AddedPets></AddedPets></PrivateRoute>
             },
 
             // admin routes
             {
                 path: 'users',
-                element: <Users></Users>
+                element: <AdminRoute><PrivateRoute><Users></Users></PrivateRoute></AdminRoute>
             },
             {
                 path: 'allPets',
-                element: <AllPets></AllPets>
+                element: <AdminRoute><PrivateRoute><AllPets></AllPets></PrivateRoute></AdminRoute>
             }
         ]
         
