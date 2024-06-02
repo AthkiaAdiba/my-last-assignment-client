@@ -2,8 +2,8 @@
 
 const Banner = () => {
     return (
-        <div>
-            <div className="hero h-[500px]" style={{ backgroundImage: 'url(https://res.cloudinary.com/dv6fgvj2c/image/upload/v1717178135/kmx9xnxsuugakjvprog2.webp)' }}>
+        <div className="mt-20">
+            <div className="hero h-[550px]" style={{ backgroundImage: 'url(https://res.cloudinary.com/dv6fgvj2c/image/upload/v1717178135/kmx9xnxsuugakjvprog2.webp)' }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">

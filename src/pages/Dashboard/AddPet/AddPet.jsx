@@ -90,7 +90,7 @@ const AddPet = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${data.name} is added to the pets.`,
+                    title: `${data.petName} is added to the pets.`,
                     showConfirmButton: false,
                     timer: 1500
                 });
