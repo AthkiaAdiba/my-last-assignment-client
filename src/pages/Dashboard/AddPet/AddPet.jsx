@@ -78,7 +78,7 @@ const AddPet = () => {
                 date: startDate,
                 adopted: false,
                 user_name: user?.displayName,
-                user_email: user?.email
+                email: user?.email
             }
             console.log(pet)
             // post menuItem
@@ -87,6 +87,8 @@ const AddPet = () => {
             if (petRes.data.insertedId) {
                 // show success popup
                 reset();
+                setSelectedOptionError('')
+                setEditorError('')
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
