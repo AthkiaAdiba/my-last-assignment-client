@@ -66,7 +66,7 @@ const AddPet = () => {
             }
         })
         if (res.data.success) {
-            // now send the menu item to the server with the image
+            // now send the pet to the server with the image
             const pet = {
                 pet_name: data.petName,
                 pet_category: selectedOption.value,
@@ -81,12 +81,13 @@ const AddPet = () => {
                 email: user?.email
             }
             console.log(pet)
-            // post menuItem
+            // post a pet
             const petRes = await axiosSecure.post('/pets', pet)
             console.log(petRes.data)
             if (petRes.data.insertedId) {
                 // show success popup
                 reset();
+                editor.commands.clearContent(true)
                 setSelectedOptionError('')
                 setEditorError('')
                 Swal.fire({
