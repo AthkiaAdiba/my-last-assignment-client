@@ -60,11 +60,11 @@ const AddedPets = () => {
 
     const handleSetAdopted = id => {
         console.log('Handle Adopted', id)
-        axiosSecure.patch(`/pets/${id}`, {adopted: true})
-        .then(res => {
-            refetch()
-            console.log(res.data)
-        })
+        axiosSecure.patch(`/pets/${id}`, { adopted: true })
+            .then(res => {
+                refetch()
+                console.log(res.data)
+            })
     }
 
     // colums
@@ -85,7 +85,7 @@ const AddedPets = () => {
         {
             accessorKey: 'pet_image',
             header: 'Pet Image',
-            cell: info => <img src={info.getValue()} alt="pet" style={{ width: 50, height: 50 }} />,
+            cell: info => <img className="mx-auto" src={info.getValue()} alt="pet" style={{ width: 50, height: 50 }} />,
         },
         {
             accessorKey: 'adopted',
@@ -125,35 +125,37 @@ const AddedPets = () => {
 
 
     return (
-        <div className="mt-28">
-            <table>
-                <thead>
-                    {table.getHeaderGroups().map(headerGroup => (
-                        <tr key={headerGroup.id}>
-                            {headerGroup.headers.map(header => (
-                                <th key={header.id} onClick={header.column.getToggleSortingHandler()}>
-                                    {flexRender(header.column.columnDef.header, header.getContext())}
-                                    {{
-                                        asc: ' 🔼',
-                                        desc: ' 🔽',
-                                    }[header.column.getIsSorted()] ?? null}
-                                </th>
-                            ))}
-                        </tr>
-                    ))}
-                </thead>
-                <tbody>
-                    {table.getRowModel().rows.map(row => (
-                        <tr key={row.id}>
-                            {row.getVisibleCells().map(cell => (
-                                <td key={cell.id}>
-                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                </td>
-                            ))}
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+        <div className="lg:mt-24">
+            <div className="overflow-x-auto">
+                <table className="w-full table">
+                    <thead className="border">
+                        {table.getHeaderGroups().map(headerGroup => (
+                            <tr key={headerGroup.id}>
+                                {headerGroup.headers.map(header => (
+                                    <th key={header.id} onClick={header.column.getToggleSortingHandler()} className="border text-center">
+                                        {flexRender(header.column.columnDef.header, header.getContext())}
+                                        {{
+                                            asc: ' 🔼',
+                                            desc: ' 🔽',
+                                        }[header.column.getIsSorted()] ?? null}
+                                    </th>
+                                ))}
+                            </tr>
+                        ))}
+                    </thead>
+                    <tbody className="border p-4">
+                        {table.getRowModel().rows.map(row => (
+                            <tr key={row.id} className="border">
+                                {row.getVisibleCells().map(cell => (
+                                    <td key={cell.id} className="border text-center">
+                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    </td>
+                                ))}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
             {pets.length > 10 && (
                 <div className="text-center mt-5 text-2xl">
                     <button onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()}>
