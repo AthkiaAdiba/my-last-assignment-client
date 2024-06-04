@@ -13,6 +13,7 @@ import Users from "../pages/Dashboard/Users/Users";
 import AllPets from "../pages/Dashboard/AllPets/AllPets";
 import AdminRoute from "./AdminRoute";
 import UpdatePet from "../pages/Dashboard/UpdatePet/UpdatePet";
+import UnadoptedPetDetails from "../components/UnadoptedPetDetails/UnadoptedPetDetails";
 
 
 
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: '/petListing',
                 element: <PetListing></PetListing>
+            },
+            {
+                path: '/unadoptedPetDetails/:id',
+                element: <PrivateRoute><UnadoptedPetDetails></UnadoptedPetDetails></PrivateRoute>
             },
             {
                 path: '/donationCampaigns',
@@ -60,6 +65,7 @@ const router = createBrowserRouter([
                 path: 'updatePet/:id',
                 element: <PrivateRoute><UpdatePet></UpdatePet></PrivateRoute>
             },
+            
 
             // admin routes
             {
