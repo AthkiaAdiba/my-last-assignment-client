@@ -37,7 +37,7 @@ const UnadoptedPetDetails = () => {
                         <dialog id="my_modal_1" className="modal">
                             <div className="modal-box">
                                 <h2 className="mb-3 text-center text-4xl font-bold text-[#FF720F]">{pet.pet_name}</h2>
-                                <ModalForm></ModalForm>
+                                <ModalForm pet={pet}></ModalForm>
                                 <div className="modal-action">
                                     <form method="dialog">
                                         {/* if there is a button in form, it will close the modal */}
