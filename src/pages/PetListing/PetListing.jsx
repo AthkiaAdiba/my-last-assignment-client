@@ -20,7 +20,7 @@ const PetListing = () => {
     return (
         <div className="px-[5%] pt-28 lg:pt-36 pb-24">
             {/* dropdown and search field */}
-            <div className="flex justify-center items-center mb-10">
+            <div className="flex flex-col lg:flex-row justify-center items-center mb-10">
                 <div className="join">
                     <input className="input input-bordered join-item" placeholder="Search" />
                     <button className="btn join-item bg-[#FF720F] text-white">Search</button>
