@@ -10,11 +10,13 @@ const Sidebar = () => {
             <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/allPets'>All Pets</NavLink>
             <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/addPet'>Add a pet</NavLink>
             <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/addedPets'>My added pets</NavLink>
-            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/addDonations'>Create Donation Campaign</NavLink>        </> :
+            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/addDonations'>Create Donation Campaign</NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/adoptionRequest'>Adoption Request</NavLink>        </> :
             <>
                 <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/addPet'>Add a pet</NavLink>
                 <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/addedPets'>My added pets</NavLink>
                 <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/addDonations'>Create Donation Campaign</NavLink>
+                <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/adoptionRequest'>Adoption Request</NavLink>
             </>}
     </>
     return (

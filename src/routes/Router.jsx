@@ -15,6 +15,7 @@ import AdminRoute from "./AdminRoute";
 import UpdatePet from "../pages/Dashboard/UpdatePet/UpdatePet";
 import UnadoptedPetDetails from "../components/UnadoptedPetDetails/UnadoptedPetDetails";
 import AddDonations from "../pages/Dashboard/AddDonations/AddDonations";
+import AdoptionRequest from "../pages/Dashboard/AdoptionRequest/AdoptionRequest";
 
 
 
@@ -68,7 +69,11 @@ const router = createBrowserRouter([
             },
             {
                 path: 'addDonations',
-                element: <AddDonations></AddDonations>
+                element: <PrivateRoute><AddDonations></AddDonations></PrivateRoute>
+            },
+            {
+                path: 'adoptionRequest',
+                element: <PrivateRoute><AdoptionRequest></AdoptionRequest></PrivateRoute>
             },
             
 

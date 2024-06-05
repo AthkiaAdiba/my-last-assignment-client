@@ -34,7 +34,7 @@ const UpdatePet = () => {
     const [startDate, setStartDate] = useState(new Date());
 
     // fetch data
-    const { data: pet = {}, refetch } = useQuery({
+    const { data: pet = {} } = useQuery({
         queryKey: ['pet', id],
         queryFn: async () => {
             const res = await axiosSecure.get(`/pet/${id}`)
@@ -46,7 +46,6 @@ const UpdatePet = () => {
     const {
         register,
         handleSubmit,
-        reset,
         formState: { errors },
     } = useForm()
 
@@ -183,7 +182,7 @@ const UpdatePet = () => {
                                 <span className="label-text text-xl font-medium">Pet Image</span>
                             </label>
                             <label className="input-group">
-                                <input type="file" defaultValue={pet.pet_image} className="file-input file-input-bordered w-full" {...register('image', { required: true })} />
+                                <input type="file" className="file-input file-input-bordered w-full" {...register('image', { required: true })} />
                                 {errors.image && <span className="text-red-700">Image is required</span>}
                             </label>
                         </div>

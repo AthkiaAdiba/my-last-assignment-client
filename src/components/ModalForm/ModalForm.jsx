@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-
+import PropTypes from 'prop-types';
 
 const ModalForm = ({ pet }) => {
     const { user } = useAuth();
@@ -82,5 +82,9 @@ const ModalForm = ({ pet }) => {
         </div>
     );
 };
+
+ModalForm.propTypes = {
+    pet: PropTypes.object
+}
 
 export default ModalForm;
