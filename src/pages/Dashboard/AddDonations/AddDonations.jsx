@@ -43,7 +43,8 @@ const AddDonations = () => {
                 short_description: form.shortDescription.value,
                 long_description: form.longDescription.value,
                 user_name: user.displayName,
-                email: user.email
+                email: user.email,
+                donated_amount: 0
             }
             console.log(campaign)
             // post a campaign
@@ -55,7 +56,7 @@ const AddDonations = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${form.petName.value} is added to the campaigns.`,
+                    title: 'This campaign is added to the campaigns.',
                     showConfirmButton: false,
                     timer: 1500
                 });
