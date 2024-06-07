@@ -9,8 +9,8 @@ const CampaignCard = ({campaignCard}) => {
                 <figure><img className="w-full h-[300px]" src={pet_image} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title text-2xl font-medium">Name: {pet_name}</h2>
-                    <p className="text-xl font-medium">Maximum Donation Amount: {maximumAmount}</p>
-                    <p className="text-xl font-medium">Donated Amount: {donated_amount}</p>
+                    <p className="text-xl font-medium">Maximum Donation Amount: ${maximumAmount}</p>
+                    <p className="text-xl font-medium">Donated Amount: ${donated_amount}</p>
                     <div className="card-actions justify-end">
                         <Link to={`/campaignCardDetails/${_id}`}><button className="btn bg-[#FF720F] text-white">View Details</button></Link>
                     </div>

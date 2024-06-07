@@ -17,6 +17,7 @@ import UnadoptedPetDetails from "../components/UnadoptedPetDetails/UnadoptedPetD
 import AddDonations from "../pages/Dashboard/AddDonations/AddDonations";
 import AdoptionRequest from "../pages/Dashboard/AdoptionRequest/AdoptionRequest";
 import CampaignCardDetails from "../components/CampaignCardDetails/CampaignCardDetails";
+import MyDonationCampaigns from "../pages/Dashboard/MyDonationCampaigns/MyDonationCampaigns";
 
 
 
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
             {
                 path: 'adoptionRequest',
                 element: <PrivateRoute><AdoptionRequest></AdoptionRequest></PrivateRoute>
+            },
+            {
+                path: 'myDonationCampaigns',
+                element: <PrivateRoute><MyDonationCampaigns></MyDonationCampaigns></PrivateRoute>
             },
             
 

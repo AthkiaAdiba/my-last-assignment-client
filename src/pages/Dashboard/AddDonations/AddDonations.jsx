@@ -44,7 +44,8 @@ const AddDonations = () => {
                 long_description: form.longDescription.value,
                 user_name: user.displayName,
                 email: user.email,
-                donated_amount: 0
+                donated_amount: 0,
+                pause: false
             }
             console.log(campaign)
             // post a campaign

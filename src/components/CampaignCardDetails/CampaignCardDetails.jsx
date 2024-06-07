@@ -11,7 +11,7 @@ const CampaignCardDetails = () => {
     const { data: details = {} } = useQuery({
         queryKey: ['details'],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/campaignCards/${id}`)
+            const res = await axiosSecure.get(`/campaignCard-details/${id}`)
             return res.data;
         }
     })
@@ -33,13 +33,17 @@ const CampaignCardDetails = () => {
                     <p className="text-2xl">Donated Amount: ${details.donated_amount}</p>
                     <p className="text-2xl">Donation Start Date: {new Date(details.create_date).toLocaleDateString()}</p>
                     <p className="text-2xl">Donation Last Date: {new Date(details.last_date).toLocaleDateString()}</p>
+                    {details.pause ? <p className="text-red-500 text-xl">This Donation is now paused</p> :
+                    <p></p>}
                     <div className="card-actions justify-end">
                         {/* Open the modal using document.getElementById('ID').showModal() method */}
-                        <button onClick={handleOpenModal} className="btn bg-[#FF720F] text-white">Donate Now</button>
+                        {details.pause ? <button disabled className="btn bg-[#FF720F] text-white">Donate Now</button>
+                            :
+                            <button onClick={handleOpenModal} className="btn bg-[#FF720F] text-white">Donate Now</button>}
                         <dialog id="my_modal_1" className="modal">
                             <div className="modal-box">
                                 <h2 className="mb-3 text-center text-4xl font-bold text-[#FF720F]"></h2>
-                                <PaymentModal></PaymentModal>
+                                <PaymentModal details={details}></PaymentModal>
                                 <div className="modal-action">
                                     <form method="dialog">
                                         {/* if there is a button in form, it will close the modal */}
