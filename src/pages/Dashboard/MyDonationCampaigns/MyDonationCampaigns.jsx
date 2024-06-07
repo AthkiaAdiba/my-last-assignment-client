@@ -91,7 +91,7 @@ const MyDonationCampaigns = () => {
                                     <button onClick={handleDelete} className="btn bg-[#FF720F] text-white"><MdDelete className="text-xl"></MdDelete></button>
                                 </th>
                                 <th>
-                                    <Link>
+                                    <Link to={`/dashboard/updateDonationCampaign/${pet._id}`}>
                                         <button className="btn bg-[#FF720F] text-white"><LuPencil className="text-lg"></LuPencil></button>
                                     </Link>
                                 </th>
