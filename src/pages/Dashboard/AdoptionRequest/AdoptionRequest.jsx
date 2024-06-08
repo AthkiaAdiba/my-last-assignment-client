@@ -38,14 +38,20 @@ const AdoptionRequest = () => {
             .then(res => {
                 console.log(res.data)
                 if (res.data.modifiedCount > 0) {
-                    refetch();
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: 'Status is changed.',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
+
+                    // set adopted field false
+                    axiosSecure.patch(`/notAdopted/${id}`, { adopted: false })
+                        .then(res => {
+                            console.log(res.data)
+                            refetch();
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: 'Status is changed.',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        })
                 }
             })
     }

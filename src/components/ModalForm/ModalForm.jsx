@@ -32,13 +32,19 @@ const ModalForm = ({ pet }) => {
             .then(res => {
                 console.log(res.data)
                 if (res.data.insertedId) {
-                    form.reset();
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Your adopted pet added Successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                    })
+
+                    // make adopted field true of pets collection
+                    axiosSecure.patch(`/pets/${_id}`, { adopted: true })
+                        .then(res => {
+                            console.log(res.data)
+                            form.reset();
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'You have adopted pet Successfully',
+                                icon: 'success',
+                                confirmButtonText: 'Cool'
+                            })
+                        })
                 }
             })
     }
