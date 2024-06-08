@@ -8,6 +8,7 @@ const Sidebar = () => {
         {isAdmin ? <>
             <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/users'>Users</NavLink>
             <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/allPets'>All Pets</NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/allDonations'>All Donations</NavLink>
             <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/addPet'>Add a pet</NavLink>
             <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/addedPets'>My added pets</NavLink>
             <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white' : 'text-black'} to='/dashboard/addDonations'>Create Donation Campaign</NavLink>

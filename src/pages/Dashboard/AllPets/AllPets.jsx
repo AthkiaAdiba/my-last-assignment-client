@@ -55,6 +55,15 @@ const AllPets = () => {
             })
     }
 
+    const handleSetNotAdopted = id => {
+        console.log('Handle not Adopted', id)
+        axiosSecure.patch(`/notAdopted/${id}`, { adopted: false })
+            .then(res => {
+                refetch()
+                console.log(res.data)
+            })
+    }
+
 
     return (
         <div className="mt-28">
@@ -71,7 +80,8 @@ const AllPets = () => {
                             <th>Status</th>
                             <th>Update</th>
                             <th>Delete</th>
-                            <th>Adoption</th>
+                            <th>Adopted</th>
+                            <th>Not <br /> Adopted</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -104,6 +114,9 @@ const AllPets = () => {
                                 </th>
                                 <th>
                                     <button onClick={() => handleSetAdopted(pet._id)} className="btn bg-[#FF720F] text-white"><TbStatusChange className="text-xl"></TbStatusChange></button>
+                                </th>
+                                <th>
+                                    <button onClick={() => handleSetNotAdopted(pet._id)} className="btn bg-[#FF720F] text-white"><TbStatusChange className="text-xl"></TbStatusChange></button>
                                 </th>
                             </tr>)
                         }

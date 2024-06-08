@@ -52,7 +52,7 @@ const UpdatePet = () => {
     // tiptap
     const editor = useEditor({
         extensions: [StarterKit],
-        content: '<P>Hello</p>',
+        content: `${pet.long_description}`,
     });
 
     // submit function
@@ -175,7 +175,7 @@ const UpdatePet = () => {
                                 <span className="label-text font-medium text-xl text-black">Pick a Date:</span>
                             </label>
                             <DatePicker className=" ml-1 p-2 border-2 rounded-md text-black text-xl"
-                                selected={pet.date} onChange={(date) => setStartDate(date)} />
+                                selected={startDate} onChange={(date) => setStartDate(date)} />
                         </div>
                         <div className="form-control md:w-1/2 ml-0 md:ml-4 lg:ml-4">
                             <label className="label">
