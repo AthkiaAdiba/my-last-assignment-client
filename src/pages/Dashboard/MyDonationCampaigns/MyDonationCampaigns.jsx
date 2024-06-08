@@ -8,6 +8,7 @@ import { IoIosPause } from "react-icons/io";
 import { FaPlay } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 import { toast } from "react-toastify";
+import ViewDonatorsModal from "../../../components/ViewDonatorsModal/ViewDonatorsModal";
 
 
 const MyDonationCampaigns = () => {
@@ -23,30 +24,37 @@ const MyDonationCampaigns = () => {
     });
     // console.log(myCampaigns)
 
+    // open modal
+    const handleOpenModal = (id) => {
+        console.log(id)
+        document.getElementById(id).showModal()
+    }
+
+
     const handleDelete = () => {
         toast.error('You Can not delete donation campaign!')
     }
 
     const handleUnpause = id => {
         axiosSecure.patch(`/setUnpause/${id}`)
-        .then(res => {
-            console.log(res.data)
-            refetch();
-            toast.success('You have Unpaused this donation campaign!')
-        })
+            .then(res => {
+                console.log(res.data)
+                refetch();
+                toast.success('You have Unpaused this donation campaign!')
+            })
     }
 
     const handlePause = id => {
         axiosSecure.patch(`/setPause/${id}`)
-        .then(res => {
-            console.log(res.data)
-            refetch();
-            toast.success('You have Paused this donation campaign!')
-        })
+            .then(res => {
+                console.log(res.data)
+                refetch();
+                toast.error('You have Paused this donation campaign!')
+            })
     }
 
     return (
-        <div className="pt-8 lg:pt-32 px-[5%] pb-20">
+        <div className="pt-8 lg:pt-32 px-[2%] pb-20">
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -57,7 +65,7 @@ const MyDonationCampaigns = () => {
                             </th>
                             <th>Image</th>
                             <th>Name</th>
-                            <th>Maximum Donation Amount</th>
+                            <th>Maximum Donation <br /> Amount</th>
                             <th>Progress</th>
                             <th>Delete</th>
                             <th>Edit</th>
@@ -85,7 +93,7 @@ const MyDonationCampaigns = () => {
                                 </td>
                                 <td className="text-center">{pet.maximumAmount}</td>
                                 <th>
-                                    <progress className="progress w-40" value={(pet.donated_amount/ pet.maximumAmount) * 100 } max="100"></progress>
+                                    <progress className="progress w-40" value={(pet.donated_amount / pet.maximumAmount) * 100} max="100"></progress>
                                 </th>
                                 <th>
                                     <button onClick={handleDelete} className="btn bg-[#FF720F] text-white"><MdDelete className="text-xl"></MdDelete></button>
@@ -96,19 +104,25 @@ const MyDonationCampaigns = () => {
                                     </Link>
                                 </th>
                                 <th className="text-center">
-                                    {pet.pause ? <Link>
-                                        <button onClick={() => handleUnpause(pet._id)} className="btn bg-[#FF720F] text-white"><FaPlay className="text-lg"></FaPlay></button>
-                                    </Link>
+                                    {pet.pause ? <button onClick={() => handleUnpause(pet._id)} className="btn bg-[#FF720F] text-white"><FaPlay className="text-lg"></FaPlay></button>
                                         :
-                                        <Link>
-                                            <button onClick={() => handlePause(pet._id)} className="btn bg-[#FF720F] text-white"><IoIosPause className="text-lg"></IoIosPause></button>
-                                        </Link>
+                                        <button onClick={() => handlePause(pet._id)} className="btn bg-[#FF720F] text-white"><IoIosPause className="text-lg"></IoIosPause></button>
                                     }
                                 </th>
                                 <th className="text-center">
-                                    <Link>
-                                        <button className="btn bg-[#FF720F] text-white"><FaEye className="text-lg"></FaEye></button>
-                                    </Link>
+                                    <button onClick={() => handleOpenModal(pet._id)} className="btn bg-[#FF720F] text-white"><FaEye className="text-lg"></FaEye></button>
+                                    <dialog id={pet._id} className="modal">
+                                        <div className="modal-box">
+                                            <h2 className="mb-3 text-center text-4xl font-bold text-[#FF720F]"></h2>
+                                            <ViewDonatorsModal petId={pet._id}></ViewDonatorsModal>
+                                            <div className="modal-action">
+                                                <form method="dialog">
+                                                    {/* if there is a button in form, it will close the modal */}
+                                                    <button className="btn bg-[#FF720F] text-white">Close</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </dialog>
                                 </th>
                             </tr>)
                         }

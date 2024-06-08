@@ -78,7 +78,7 @@ const UpdateDonationCampaign = () => {
     }
 
     return (
-        <div className="font-barlow mb-10 lg:mb-24 py-16 px-3 lg:px-24 mt-0 lg:mt-20">
+        <div className="font-barlow mb-10 lg:mb-24 py-16 px-3 mt-0 lg:mt-20">
             <h2 className="text-4xl font-extrabold text-center mb-5 text-black">Update Campaign</h2>
             <form onSubmit={handleUpdateDonations}>
                 {/* pet Name and maximum account row */}
