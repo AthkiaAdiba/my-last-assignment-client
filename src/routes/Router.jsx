@@ -19,6 +19,7 @@ import AdoptionRequest from "../pages/Dashboard/AdoptionRequest/AdoptionRequest"
 import CampaignCardDetails from "../components/CampaignCardDetails/CampaignCardDetails";
 import MyDonationCampaigns from "../pages/Dashboard/MyDonationCampaigns/MyDonationCampaigns";
 import UpdateDonationCampaign from "../pages/Dashboard/UpdateDonationCampaign/UpdateDonationCampaign";
+import MyDonations from "../pages/Dashboard/MyDonations/MyDonations";
 
 
 
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
             {
                 path: 'updateDonationCampaign/:id',
                 element: <PrivateRoute><UpdateDonationCampaign></UpdateDonationCampaign></PrivateRoute>
+            },
+            {
+                path: 'myDonations',
+                element: <PrivateRoute><MyDonations></MyDonations></PrivateRoute>
             },
             
 
