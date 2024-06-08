@@ -8,7 +8,7 @@ const Banner = () => {
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
                         <h1 className="mb-5 text-5xl font-bold text-white">Best Friend for Your Best Time</h1>
-                        <p className="mb-5 text-white">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        <p className="mb-5 text-white">Welcome to our pet adoption website, where finding your perfect furry friend is just a click away! We connect loving homes with pets in need, offering a wide range of cats, dogs, and other animals looking for a forever family.</p>
                         <button className="btn bg-[#FF720F] border-none text-white">Get Started</button>
                     </div>
                 </div>

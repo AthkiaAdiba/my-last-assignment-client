@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Bella",
+        "image": "https://res.cloudinary.com/dv6fgvj2c/image/upload/v1717856919/ay54vuxg0wgykoget9ku.jpg"
+    },
+    {
+        "name": "Max",
+        "image": "https://res.cloudinary.com/dv6fgvj2c/image/upload/v1717856948/i5y8q1c7k6yajn2gzlsa.jpg"
+    },
+    {
+        "name": "Luna",
+        "image": "https://res.cloudinary.com/dv6fgvj2c/image/upload/v1717856972/t7hcubfq2sz2ehbdfgj4.jpg"
+    },
+    {
+        "name": "Charlie",
+        "image": "https://res.cloudinary.com/dv6fgvj2c/image/upload/v1717857027/wqhohf4suu7cxeqhwg73.jpg"
+    },
+    {
+        "name": "Daisy",
+        "image": "https://res.cloudinary.com/dv6fgvj2c/image/upload/v1717857040/plejsljpkldmwecfyull.jpg"
+    },
+    {
+        "name": "Rocky",
+        "image": "https://res.cloudinary.com/dv6fgvj2c/image/upload/v1717857055/trfcxkpijbyyiboyoava.jpg"
+    }
+]
