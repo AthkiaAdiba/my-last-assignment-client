@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
+
 
 
 const AdoptionProcess = () => {
@@ -19,11 +22,11 @@ const AdoptionProcess = () => {
                 {
                     process.map((pros, index) => <div key={index} className="card bg-base-100 dark:bg-black">
                         <figure className="px-10 pt-10">
-                            <img src={pros.image} alt="Shoes" className="rounded-full" />
+                            <img src={pros.image || <Skeleton />} alt="Shoes" className="rounded-full" />
                         </figure>
                         <div className="card-body items-center text-center">
-                            <h2 className="card-title text-3xl mb-5 dark:text-white">{pros.step}</h2>
-                            <p className="text-lg dark:text-white">{pros.description}</p>
+                            <h2 className="card-title text-3xl mb-5 dark:text-white">{pros.step || <Skeleton />}</h2>
+                            <p className="text-lg dark:text-white">{pros.description || <Skeleton />}</p>
                         </div>
                     </div>)
                 }

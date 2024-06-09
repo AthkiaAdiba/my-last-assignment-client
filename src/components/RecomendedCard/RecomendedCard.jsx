@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
+import { Link } from 'react-router-dom';
 
-const CampaignCard = ({campaignCard}) => {
-    const {pet_name, pet_image, maximumAmount, donated_amount, _id} = campaignCard;
+
+const RecomendedCard = ({card}) => {
+    const {pet_name, pet_image, maximumAmount, donated_amount, _id} = card;
     return (
         <div>
             <div className="card bg-base-100 dark:bg-black shadow-xl">
@@ -22,8 +23,8 @@ const CampaignCard = ({campaignCard}) => {
     );
 };
 
-CampaignCard.propTypes = {
-    campaignCard: PropTypes.object
+RecomendedCard.propTypes = {
+    card: PropTypes.object
 }
 
-export default CampaignCard;
+export default RecomendedCard;

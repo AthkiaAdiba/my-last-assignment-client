@@ -24,11 +24,12 @@ import AllDonations from "../pages/Dashboard/AllDonations/AllDonations";
 
 
 
+
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
-        children : [
+        children: [
             {
                 path: '/',
                 element: <Home></Home>
@@ -47,7 +48,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/campaignCardDetails/:id',
-                element: <PrivateRoute><CampaignCardDetails></CampaignCardDetails></PrivateRoute>
+                element: <PrivateRoute><CampaignCardDetails></CampaignCardDetails></PrivateRoute>,
+
             },
             {
                 path: '/login',
@@ -96,7 +98,7 @@ const router = createBrowserRouter([
                 path: 'myDonations',
                 element: <PrivateRoute><MyDonations></MyDonations></PrivateRoute>
             },
-            
+
 
             // admin routes
             {
@@ -112,7 +114,7 @@ const router = createBrowserRouter([
                 element: <AdminRoute><PrivateRoute><AllDonations></AllDonations></PrivateRoute></AdminRoute>
             }
         ]
-        
+
     }
 ]);
 

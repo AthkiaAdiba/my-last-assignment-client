@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StarterKit from "@tiptap/starter-kit";
 import Swal from "sweetalert2";
 import DatePicker from "react-datepicker";
@@ -54,6 +54,14 @@ const UpdatePet = () => {
         extensions: [StarterKit],
         content: `${pet.long_description}`,
     });
+
+    useEffect(() => {
+        if(editor && pet){
+            editor.commands.setContent(pet.long_description);
+        }
+        
+        
+    }, [editor, pet])
 
     // submit function
     const onSubmit = async (data) => {

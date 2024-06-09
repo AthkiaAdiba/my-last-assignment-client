@@ -5,6 +5,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { InView } from "react-intersection-observer";
 
 
+
 const DonationCampaigns = () => {
   const [limit, setLimit] = useState(6);
   const axiosPublic = useAxiosPublic();
@@ -19,13 +20,6 @@ const DonationCampaigns = () => {
 
   })
 
-  // const { data: campaignCards = [] } = useQuery({
-  //   queryKey: ['campaignCards'],
-  //   queryFn: async () => {
-  //     const res = await axiosSecure.get('/campaignCards')
-  //     return res.data;
-  //   }
-  // });
 
   console.log(campaignCards)
 

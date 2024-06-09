@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 const Categories = () => {
@@ -18,9 +20,9 @@ const Categories = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {
                     Categories.map(category => <div key={category._id} className="card card-compact bg-base-100 dark:bg-black shadow-xl">
-                        <figure><img className="h-[400px]" src={category.image} alt="Shoes" /></figure>
+                        <figure><img className="h-[400px]" src={category.image || <Skeleton />} alt="Shoes" /></figure>
                         <div className="card-body">
-                            <h2 className="card-title text-4xl text-[#FF720F]">{category.name}</h2>
+                            <h2 className="card-title text-4xl text-[#FF720F]">{category.name || <Skeleton />}</h2>
                         </div>
                     </div>)
                 }
