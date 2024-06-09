@@ -13,7 +13,8 @@ const AdoptionProcess = () => {
 
     return (
         <div className="px-[5%] pt-28 lg:pt-40">
-            <h2 className="mb-16 text-5xl font-bold text-[#FF720F] text-center">Pet Adoption Process</h2>
+            <h5 className='mb-5 text-[#FF720F] text-xl font-medium text-center'>How We Work</h5>
+            <h2 className="mb-16 text-5xl font-bold text-center">Pet Adoption Process</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {
                     process.map((pros, index) => <div key={index} className="card bg-base-100">
