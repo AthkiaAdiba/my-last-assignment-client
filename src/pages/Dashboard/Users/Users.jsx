@@ -34,12 +34,12 @@ const Users = () => {
     }
 
     return (
-        <div className="pt-8 lg:pt-32 px-[5%] pb-20">
+        <div className="pt-8 lg:pt-32 px-[5%] pb-20 dark:bg-black">
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr className="text-2xl text-black">
+                        <tr className="text-2xl text-black dark:text-white">
                             <th>
                                 #
                             </th>
@@ -51,7 +51,7 @@ const Users = () => {
                     </thead>
                     <tbody>
                         {
-                            users.map((user, index) => <tr key={user._id} className="text-lg text-black">
+                            users.map((user, index) => <tr key={user._id} className="text-lg text-black dark:text-white">
                                 <th>
                                     {index + 1}
                                 </th>

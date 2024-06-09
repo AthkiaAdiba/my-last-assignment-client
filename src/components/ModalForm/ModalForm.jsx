@@ -44,33 +44,33 @@ const ModalForm = ({ pet }) => {
     }
     return (
         <div>
-            <div className="card shrink-0 w-full max-w-sm bg-base-100">
+            <div className="card shrink-0 w-full max-w-sm bg-base-100 dark:bg-black">
                 <form onSubmit={handleAddAdoption} className="card-body">
                     {/* name */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text dark:text-white">Name</span>
                         </label>
                         <input type="text" defaultValue={user?.displayName} placeholder="Name" className="input input-bordered" required disabled />
                     </div>
                     {/* email */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text dark:text-white">Email</span>
                         </label>
                         <input type="email" defaultValue={user?.email} placeholder="email" className="input input-bordered" required disabled />
                     </div>
                     {/* phone number */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Phone Number</span>
+                            <span className="label-text dark:text-white">Phone Number</span>
                         </label>
                         <input type="number" name="phone" placeholder="Phone Number" className="input input-bordered" required />
                     </div>
                     {/* address */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Address</span>
+                            <span className="label-text dark:text-white">Address</span>
                         </label>
                         <input type="text" name="address" placeholder="Address" className="input input-bordered" required />
                     </div>

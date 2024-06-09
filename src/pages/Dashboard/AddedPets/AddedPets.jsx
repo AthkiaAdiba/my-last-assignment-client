@@ -125,12 +125,12 @@ const AddedPets = () => {
 
 
     return (
-        <div className="lg:mt-24">
+        <div className="lg:mt-24 pb-20">
             <div className="overflow-x-auto">
                 <table className="w-full table">
                     <thead className="border">
                         {table.getHeaderGroups().map(headerGroup => (
-                            <tr key={headerGroup.id}>
+                            <tr key={headerGroup.id} className="dark:text-white text-lg">
                                 {headerGroup.headers.map(header => (
                                     <th key={header.id} onClick={header.column.getToggleSortingHandler()} className="border text-center">
                                         {flexRender(header.column.columnDef.header, header.getContext())}
@@ -145,7 +145,7 @@ const AddedPets = () => {
                     </thead>
                     <tbody className="border p-4">
                         {table.getRowModel().rows.map(row => (
-                            <tr key={row.id} className="border">
+                            <tr key={row.id} className="border dark:text-white">
                                 {row.getVisibleCells().map(cell => (
                                     <td key={cell.id} className="border text-center">
                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -157,7 +157,7 @@ const AddedPets = () => {
                 </table>
             </div>
             {pets.length > 10 && (
-                <div className="text-center mt-5 text-2xl">
+                <div className="text-center mt-5 text-2xl dark:text-white">
                     <button onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()}>
                         {'<<'}
                     </button>{' '}
@@ -178,7 +178,7 @@ const AddedPets = () => {
                     </span>
                     <span>
                         | Go to page:{' '}
-                        <input
+                        <input className="dark:text-black"
                             type="number"
                             defaultValue={table.getState().pagination.pageIndex + 1}
                             onChange={e => {
@@ -188,14 +188,14 @@ const AddedPets = () => {
                             style={{ width: '100px' }}
                         />
                     </span>{' '}
-                    <select
+                    <select className="dark:text-black"
                         value={table.getState().pagination.pageSize}
                         onChange={e => {
                             table.setPageSize(Number(e.target.value));
                         }}
                     >
                         {[10, 20, 30, 40, 50].map(pageSize => (
-                            <option key={pageSize} value={pageSize}>
+                            <option className="dark:text-black" key={pageSize} value={pageSize}>
                                 Show {pageSize}
                             </option>
                         ))}

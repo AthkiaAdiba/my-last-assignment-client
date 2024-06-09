@@ -79,13 +79,13 @@ const UpdateDonationCampaign = () => {
 
     return (
         <div className="font-barlow mb-10 lg:mb-24 py-16 px-3 mt-0 lg:mt-20">
-            <h2 className="text-4xl font-extrabold text-center mb-5 text-black">Update Campaign</h2>
+            <h2 className="text-4xl font-extrabold text-center mb-5 text-black dark:text-white">Update Campaign</h2>
             <form onSubmit={handleUpdateDonations}>
                 {/* pet Name and maximum account row */}
                 <div className="md:flex mb-3 lg:mb-8">
                     <div className="form-control md:w-1/2 mb-3 lg:mb-0">
                         <label className="label">
-                            <span className="label-text text-black text-xl font-medium">Pet Name</span>
+                            <span className="label-text text-black text-xl font-medium dark:text-white">Pet Name</span>
                         </label>
                         <label className="input-group text-black">
                             <input type="text" name="petName" defaultValue={donation.pet_name} placeholder="Pet Name" className="input input-bordered w-full" required />
@@ -93,7 +93,7 @@ const UpdateDonationCampaign = () => {
                     </div>
                     <div className="form-control md:w-1/2 ml-0 md:ml-4 lg:ml-4">
                         <label className="label">
-                            <span className="label-text text-black text-xl font-medium">Maximum Amount</span>
+                            <span className="label-text text-black text-xl font-medium dark:text-white">Maximum Amount</span>
                         </label>
                         <label className="input-group">
                             <input type="number" defaultValue={donation.maximumAmount} name="maximumAmount" placeholder="Maximum Amount" className="input input-bordered w-full" required />
@@ -104,14 +104,14 @@ const UpdateDonationCampaign = () => {
                 <div className="md:flex mb-3 lg:mb-8">
                     <div className="form-control md:w-1/2 mb-3 lg:mb-0">
                         <label className="label">
-                            <span className="label-text text-black text-xl font-medium">Donation Create Date</span>
+                            <span className="label-text text-black text-xl font-medium dark:text-white">Donation Create Date</span>
                         </label>
                         <DatePicker className="w-full ml-1 p-2 border-2 rounded-md text-black text-xl"
                             selected={startDate} onChange={(date) => setStartDate(date)} required />
                     </div>
                     <div className="form-control md:w-1/2 ml-0 md:ml-4 lg:ml-4">
                         <label className="label">
-                            <span className="label-text text-black text-xl font-medium">Donation Last Date</span>
+                            <span className="label-text text-black text-xl font-medium dark:text-white">Donation Last Date</span>
                         </label>
                         <DatePicker className="w-full ml-1 p-2 border-2 rounded-md text-black text-xl"
                             selected={startDate2} onChange={(date) => setStartDate2(date)} required />
@@ -121,7 +121,7 @@ const UpdateDonationCampaign = () => {
                 <div className="md:flex mb-3 lg:mb-8">
                     <div className="form-control md:w-1/2 mb-3 lg:mb-0">
                         <label className="label">
-                            <span className="label-text text-black text-xl font-medium">User Email</span>
+                            <span className="label-text text-black text-xl font-medium dark:text-white">User Email</span>
                         </label>
                         <label className="input-group">
                             <input type="email" name="email" defaultValue={user?.email} disabled placeholder="User Email" className="input input-bordered w-full" required />
@@ -129,7 +129,7 @@ const UpdateDonationCampaign = () => {
                     </div>
                     <div className="form-control md:w-1/2 ml-0 md:ml-4 lg:ml-4">
                         <label className="label">
-                            <span className="label-text text-black text-xl font-medium">User Name</span>
+                            <span className="label-text text-black text-xl font-medium dark:text-white">User Name</span>
                         </label>
                         <label className="input-group">
                             <input type="text" name="userName" defaultValue={user?.displayName} disabled placeholder="User Name" className="input input-bordered w-full" required />
@@ -140,7 +140,7 @@ const UpdateDonationCampaign = () => {
                 <div className="md:flex mb-3 lg:mb-8">
                     <div className="form-control md:w-1/2 ml-0 md:ml-4 lg:ml-4">
                         <label className="label">
-                            <span className="label-text text-black text-xl font-medium">Short Description</span>
+                            <span className="label-text text-black text-xl font-medium dark:text-white">Short Description</span>
                         </label>
                         <label className="input-group">
                             <textarea name="shortDescription" defaultValue={donation.short_description} placeholder="Short Description" className="textarea textarea-bordered textarea-sm w-full" required ></textarea>
@@ -148,7 +148,7 @@ const UpdateDonationCampaign = () => {
                     </div>
                     <div className="form-control md:w-1/2 ml-0 md:ml-4 lg:ml-4">
                         <label className="label">
-                            <span className="label-text text-black text-xl font-medium">Long Description</span>
+                            <span className="label-text text-black text-xl font-medium dark:text-white">Long Description</span>
                         </label>
                         <label className="input-group">
                             <textarea name="longDescription" defaultValue={donation.long_description} placeholder="Long Description" className="textarea textarea-bordered textarea-sm w-full" required ></textarea>
@@ -158,7 +158,7 @@ const UpdateDonationCampaign = () => {
                 <div className="flex gap-6 items-center">
                     <div className="form-control w-full lg:w-1/3 mb-4 lg:mb-8">
                         <label className="label">
-                            <span className="label-text text-xl font-medium">Pet Image</span>
+                            <span className="label-text text-xl font-medium dark:text-white">Pet Image</span>
                         </label>
                         <label className="input-group">
                             <input type="file" name="image" className="file-input file-input-bordered w-full" required />

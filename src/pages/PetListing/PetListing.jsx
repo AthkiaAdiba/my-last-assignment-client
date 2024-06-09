@@ -52,17 +52,17 @@ const PetListing = () => {
 
 
     return (
-        <div className="px-[5%] pt-28 lg:pt-36 pb-24">
+        <div className="px-[5%] pt-28 lg:pt-36 pb-24 dark:bg-black">
             {/* dropdown and search field */}
             <div className="flex flex-col lg:flex-row justify-center items-center mb-10">
                 <form onSubmit={handleSearch} className="join">
-                    <input type="text" name="search" className="input input-bordered join-item" placeholder="Search" />
+                    <input type="text" name="search" className="input input-bordered join-item dark:bg-black dark:border-2" placeholder="Search" />
                     <button type="submit" className="btn join-item bg-[#FF720F] text-white">Search</button>
                 </form>
                 <div className="text-center">
                     <details className="dropdown">
                         <summary className="m-1 btn bg-[#FF720F] text-white">Select Category <IoIosArrowDown></IoIosArrowDown></summary>
-                        <ul className="p-2 shadow menu dropdown-content z-[1] bg-white rounded-box w-52">
+                        <ul className="p-2 shadow menu dropdown-content z-[1] bg-white rounded-box w-52 dark:bg-black dark:text-white">
                             {
                                 categoryArray.map((cate, index) => <li key={index}
                                 onClick={() => handleCategorySelect(cate)}

@@ -50,7 +50,7 @@ const AllDonations = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr className="text-xl text-black">
+                        <tr className="text-xl text-black dark:text-white">
                             <th>
                                 #
                             </th>
@@ -65,7 +65,7 @@ const AllDonations = () => {
                     </thead>
                     <tbody>
                         {
-                            allDonationsCampaigns.map((pet, index) => <tr key={pet._id} className="text-lg text-black">
+                            allDonationsCampaigns.map((pet, index) => <tr key={pet._id} className="text-lg text-black dark:text-white">
                                 <th>
                                     {index + 1}
                                 </th>
@@ -83,7 +83,7 @@ const AllDonations = () => {
                                 </td>
                                 <td className="text-center">{pet.maximumAmount}</td>
                                 <th>
-                                    <progress className="progress w-40" value={(pet.donated_amount / pet.maximumAmount) * 100} max="100"></progress>
+                                    <progress className="progress w-40 dark:bg-white" value={(pet.donated_amount / pet.maximumAmount) * 100} max="100"></progress>
                                 </th>
                                 <th>
                                     <button onClick={handleDelete} className="btn bg-[#FF720F] text-white"><MdDelete className="text-xl"></MdDelete></button>

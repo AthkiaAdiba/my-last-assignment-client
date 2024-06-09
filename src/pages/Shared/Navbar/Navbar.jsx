@@ -1,19 +1,21 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
-import { MdLogout } from "react-icons/md";
+import { MdLogout, MdOutlineDarkMode } from "react-icons/md";
 import logo from '../../../assets/logo.webp'
 import { MdDashboard } from "react-icons/md";
 import useAdmin from "../../../hooks/useAdmin";
+import useTheme from "../../../hooks/useTheme";
+import { CiLight } from "react-icons/ci";
 
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [isAdmin] = useAdmin();
-    // const { toggleTheme, theme } = useTheme();
+    const { toggleTheme, theme } = useTheme();
 
     const navLinks = <>
-        <NavLink className={({ isActive }) => isActive ? 'underline mr-4 text-[#FF720F]' : 'text-black mr-4'} to='/'>Home</NavLink>
+        <NavLink className={({ isActive }) => isActive ? 'underline mr-4 text-[#FF720F]' : 'text-black dark:text-white mr-4'} to='/'>Home</NavLink>
         <NavLink className={({ isActive }) => isActive ? 'underline mr-4 text-[#FF720F]' : 'text-black dark:text-white mr-4'} to='/donationCampaigns'>Donation Campaigns</NavLink>
         <NavLink className={({ isActive }) => isActive ? 'underline mr-4 text-[#FF720F]' : 'text-black dark:text-white mr-4'} to='/petListing'>Pet Listing</NavLink>
 
@@ -42,10 +44,15 @@ const Navbar = () => {
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-white dark:bg-zinc-900 text-black text-base font-forum rounded-box w-52">
                             {navLinks}
-                            {/* <button className="btn bg-[#9B804E]"><Link to='/login' className="mr-5 text-white border-none font-barlow text-xl">Login</Link></button>
-                            <button className="btn bg-[#9B804E]"><Link to='/register' className="w-14 lg:w-20 text-white border-none font-barlow text-xl">Register</Link></button> */}
-                            <Link to='/login' className="mr-5 text-black border-none font-barlow text-lg">Login</Link>
-                            <Link to='/register' className="w-14 lg:w-20 text-black border-none font-barlow text-xl">Register</Link>
+                            <Link to='/login' className="mr-5 text-black border-none font-barlow text-lg dark:text-white">Login</Link>
+                            <Link to='/register' className="w-14 lg:w-20 text-black border-none font-barlow text-xl dark:text-white">Register</Link>
+                            {/* theme change */}
+                            <span onClick={toggleTheme} className="text-2xl mr-3 text-center">
+                                {
+                                    theme === "dark" ? <CiLight className="dark:text-white"></CiLight> :
+                                        <MdOutlineDarkMode></MdOutlineDarkMode>
+                                }
+                            </span>
                         </ul>
                     </div>
                     <div className="hidden md:block lg:block">
@@ -60,6 +67,13 @@ const Navbar = () => {
                 {
                     user ?
                         <div className="navbar-end flex gap-0 lg:gap-3 items-center">
+                            {/* theme change */}
+                            <span onClick={toggleTheme} className="hidden md:hidden lg:block text-2xl mr-3 text-center">
+                                {
+                                    theme === "dark" ? <CiLight className="dark:text-white"></CiLight> :
+                                        <MdOutlineDarkMode></MdOutlineDarkMode>
+                                }
+                            </span>
                             <details className="dropdown mr-[150%] md:mr-[45%] lg:mr-0">
                                 <summary className="btn w-10 lg:w-12 h-10 lg:h-12 rounded-full">
                                     <div className="avatar tooltip tooltip-right md:tooltip-left lg:tooltip-left" data-tip={user.displayName}>
@@ -108,6 +122,13 @@ const Navbar = () => {
                             </div>
                             <div className="hidden lg:block">
                                 <div className="flex items-center">
+                                    {/* theme change */}
+                                    <span onClick={toggleTheme} className="text-2xl mr-3 text-center">
+                                        {
+                                            theme === "dark" ? <CiLight className="dark:text-white"></CiLight> :
+                                                <MdOutlineDarkMode></MdOutlineDarkMode>
+                                        }
+                                    </span>
                                     <Link to='/login' className="btn mr-5 w-14 lg:w-20 bg-[#FF720F] text-white border-none text-xl">Login</Link>
                                     <Link to='/register' className="btn w-14 lg:w-20 bg-[#FF720F] text-white border-none text-xl">Register</Link>
                                 </div>

@@ -104,14 +104,14 @@ const AddPet = () => {
 
     return (
         <div>
-            <div className="bg-base-100 shadow-2xl font-barlow mb-16 py-16 px-3 lg:px-24 lg:mt-16">
-                <h2 className="text-4xl font-extrabold text-center mb-5">Add a Pet</h2>
+            <div className="bg-base-100 dark:bg-black shadow-2xl font-barlow mb-16 py-16 px-3 lg:px-24 lg:mt-16">
+                <h2 className="text-4xl font-extrabold text-center mb-5 dark:text-white">Add a Pet</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     {/* name and category row */}
                     <div className="md:flex mb-3 lg:mb-8">
                         <div className="form-control md:w-1/2 mb-3 lg:mb-0">
                             <label className="label">
-                                <span className="label-text text-xl font-medium">Pet Category</span>
+                                <span className="label-text text-xl font-medium dark:text-white">Pet Category</span>
                             </label>
                             <label className="input-group text-black">
                                 <Select
@@ -124,7 +124,7 @@ const AddPet = () => {
                         </div>
                         <div className="form-control md:w-1/2 ml-0 md:ml-4 lg:ml-4">
                             <label className="label">
-                                <span className="label-text text-xl font-medium">Pet Name</span>
+                                <span className="label-text text-xl font-medium dark:text-white">Pet Name</span>
                             </label>
                             <label className="input-group">
                                 <input type="text" placeholder="Pet Name" className="input input-bordered w-full" {...register("petName", { required: true })} />
@@ -136,7 +136,7 @@ const AddPet = () => {
                     <div className="md:flex mb-3 lg:mb-8">
                         <div className="form-control md:w-1/2 mb-3 lg:mb-0">
                             <label className="label">
-                                <span className="label-text text-xl font-medium">Pet Location</span>
+                                <span className="label-text text-xl font-medium dark:text-white">Pet Location</span>
                             </label>
                             <label className="input-group">
                                 <input type="text" placeholder="Pet Location" className="input input-bordered w-full" {...register("location", { required: true })} />
@@ -145,7 +145,7 @@ const AddPet = () => {
                         </div>
                         <div className="form-control md:w-1/2 ml-0 md:ml-4 lg:ml-4">
                             <label className="label">
-                                <span className="label-text text-xl font-medium">Pet age</span>
+                                <span className="label-text text-xl font-medium dark:text-white">Pet age</span>
                             </label>
                             <label className="input-group">
                                 <input type="number" name="age" placeholder="Pet age" className="input input-bordered w-full" {...register("age", { required: true })} />
@@ -157,7 +157,7 @@ const AddPet = () => {
                     <div className="md:flex mb-3 lg:mb-8">
                         <div className="form-control md:w-1/2 mb-3 lg:mb-0">
                             <label className="label">
-                                <span className="label-text text-xl font-medium">Short Description</span>
+                                <span className="label-text text-xl font-medium dark:text-white">Short Description</span>
                             </label>
                             <label className="input-group">
                                 <textarea placeholder="Short Description" className="textarea textarea-bordered textarea-sm w-full" {...register("shortDescription", { required: true })} ></textarea>
@@ -168,14 +168,14 @@ const AddPet = () => {
                         {/* for date */}
                         <div>
                             <label className="label">
-                                <span className="label-text font-medium text-xl text-black">Pick a Date:</span>
+                                <span className="label-text font-medium text-xl text-black dark:text-white">Pick a Date:</span>
                             </label>
                             <DatePicker className=" ml-1 p-2 border-2 rounded-md text-black text-xl"
                             selected={startDate} onChange={(date) => setStartDate(date)} />
                         </div>
                         <div className="form-control md:w-1/2 ml-0 md:ml-4 lg:ml-4">
                             <label className="label">
-                                <span className="label-text text-xl font-medium">Pet Image</span>
+                                <span className="label-text text-xl font-medium dark:text-white">Pet Image</span>
                             </label>
                             <label className="input-group">
                                 <input type="file" className="file-input file-input-bordered w-full" {...register('image', { required: true })} />
@@ -185,9 +185,9 @@ const AddPet = () => {
                     </div>
                     <div className='mb-8 border rounded-lg border-gray-300'>
                         <label className="label">
-                            <span className="label-text text-xl font-medium">Long Description:</span>
+                            <span className="label-text text-xl font-medium dark:text-white">Long Description:</span>
                         </label>
-                        <EditorContent editor={editor} className='overflow-y-scroll max-h-60' />
+                        <EditorContent editor={editor} className='overflow-y-scroll max-h-60 dark:text-white' />
                         <p className="text-red-700">{editorError}</p>
                     </div>
 

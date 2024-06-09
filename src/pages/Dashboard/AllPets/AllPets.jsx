@@ -66,12 +66,12 @@ const AllPets = () => {
 
 
     return (
-        <div className="mt-28">
+        <div className="mt-28 pb-16">
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr className="text-lg text-black">
+                        <tr className="text-lg text-black dark:text-white">
                             <th>
                                 #
                             </th>
@@ -86,7 +86,7 @@ const AllPets = () => {
                     </thead>
                     <tbody>
                         {
-                            allPets.map((pet, index) => <tr key={pet._id} className="text-base">
+                            allPets.map((pet, index) => <tr key={pet._id} className="text-base dark:text-white">
                                 <th>
                                     {index + 1}
                                 </th>

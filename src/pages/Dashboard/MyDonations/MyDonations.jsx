@@ -30,7 +30,7 @@ const MyDonations = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr className="text-xl text-black">
+                        <tr className="text-xl text-black dark:text-white">
                             <th>
                                 #
                             </th>
@@ -42,7 +42,7 @@ const MyDonations = () => {
                     </thead>
                     <tbody>
                         {
-                            myDonations.map((donation, index) => <tr key={donation._id} className="text-lg text-black">
+                            myDonations.map((donation, index) => <tr key={donation._id} className="text-lg text-black dark:text-white">
                                 <th>
                                     {index + 1}
                                 </th>

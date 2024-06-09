@@ -51,7 +51,7 @@ const AdoptionRequest = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr className="text-lg text-black">
+                        <tr className="text-lg text-black dark:text-white">
                             <th>
                                 #
                             </th>
@@ -65,7 +65,7 @@ const AdoptionRequest = () => {
                     </thead>
                     <tbody>
                         {
-                            adoptionRequests.map((adoptionRequest, index) => <tr key={adoptionRequest._id} className="text-base">
+                            adoptionRequests.map((adoptionRequest, index) => <tr key={adoptionRequest._id} className="text-base dark:text-white">
                                 <th>
                                     {index + 1}
                                 </th>

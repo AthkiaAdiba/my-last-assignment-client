@@ -8,7 +8,7 @@ import TakingCare from "../TakingCare/TakingCare";
 
 const Home = () => {
     return (
-        <div>
+        <div className="dark:bg-black">
            <Banner></Banner>
            <Categories></Categories>
            <CallToAction></CallToAction>

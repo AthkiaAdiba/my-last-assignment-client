@@ -7,7 +7,7 @@ const Dashboard = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="flex flex-col lg:flex-row">
+            <div className="flex flex-col lg:flex-row dark:bg-black">
                 <div className="">
                     <Sidebar></Sidebar>
                 </div>
