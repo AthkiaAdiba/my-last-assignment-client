@@ -14,7 +14,7 @@ const Categories = () => {
     })
     // console.log(Categories)
     return (
-        <div className="px-[5%] pt-28 lg:pt-36">
+        <div className="px-[5%] pt-28 lg:pt-44">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {
                     Categories.map(category => <div key={category._id} className="card card-compact bg-base-100 shadow-xl">

@@ -1,0 +1,17 @@
+[
+    {
+      "step": "Find your pet",
+      "description": "Explore local shelters or online platforms to find a pet that matches your preferences and lifestyle. Consider factors such as size, age, breed, and temperament.",
+      "image": "https://res.cloudinary.com/dv6fgvj2c/image/upload/v1717870176/iuvwt6xz3mfhyh2fqhn9.jpg"
+    },
+    {
+      "step": "Know your pet",
+      "description": "Once you've found a potential pet, spend time getting to know them. Interact with them, ask shelter staff or previous owners about their behavior, medical history, and any special needs.",
+      "image": "https://res.cloudinary.com/dv6fgvj2c/image/upload/v1717870209/dyyfgjviaw1o3m5lorgc.jpg"
+    },
+    {
+      "step": "Take your pet home",
+      "description": "After finding the perfect match, complete the adoption process, which may include paperwork, fees, and sometimes a home visit. Prepare your home for your new pet's arrival, including food, bedding, toys, and a safe space.",
+      "image": "https://res.cloudinary.com/dv6fgvj2c/image/upload/v1717870262/szsp6zziclyfzn6zypb6.jpg"
+    }
+  ]
