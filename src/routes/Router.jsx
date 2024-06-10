@@ -21,6 +21,7 @@ import MyDonationCampaigns from "../pages/Dashboard/MyDonationCampaigns/MyDonati
 import UpdateDonationCampaign from "../pages/Dashboard/UpdateDonationCampaign/UpdateDonationCampaign";
 import MyDonations from "../pages/Dashboard/MyDonations/MyDonations";
 import AllDonations from "../pages/Dashboard/AllDonations/AllDonations";
+import Profile from "../pages/Shared/Profile/Profile";
 
 
 
@@ -51,15 +52,15 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><CampaignCardDetails></CampaignCardDetails></PrivateRoute>,
 
             },
-            {
-                path: '/login',
-                element: <Login></Login>
-            },
-            {
-                path: '/register',
-                element: <Register></Register>
-            }
         ]
+    },
+    {
+        path: 'login',
+        element: <Login></Login>
+    },
+    {
+        path: 'register',
+        element: <Register></Register>
     },
     {
         path: 'dashboard',
@@ -97,6 +98,10 @@ const router = createBrowserRouter([
             {
                 path: 'myDonations',
                 element: <PrivateRoute><MyDonations></MyDonations></PrivateRoute>
+            },
+            {
+                path: 'profile',
+                element: <PrivateRoute><Profile></Profile></PrivateRoute>
             },
 
 

@@ -6,12 +6,15 @@ import { LuPencil } from "react-icons/lu";
 import { toast } from "react-toastify";
 import { FaPlay } from "react-icons/fa";
 import { IoIosPause } from "react-icons/io";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import { Helmet } from "react-helmet-async";
 
 
 const AllDonations = () => {
     const axiosSecure = useAxiosSecure();
 
-    const { data: allDonationsCampaigns = [], refetch } = useQuery({
+    const { data: allDonationsCampaigns = [], refetch, isLoading } = useQuery({
         queryKey: ['allDonationsCampaigns'],
         queryFn: async () => {
             const res = await axiosSecure.get('/adminPage')
@@ -43,9 +46,13 @@ const AllDonations = () => {
             })
     }
 
+    if (isLoading) return <div className="mt-28"><Skeleton count={5} /></div>
+    
     return (
-
         <div className="pt-8 lg:pt-32 px-[2%] pb-20">
+            <Helmet>
+                <title>All Donations | Pets</title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

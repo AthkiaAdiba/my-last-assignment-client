@@ -4,19 +4,22 @@ import CheckoutForm from "../CheckoutForm/CheckoutForm";
 import PropTypes from 'prop-types';
 
 
+
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
-const PaymentModal = ({details}) => {
+
+const PaymentModal = ({details, refetch}) => {
     return (
         <div>
             <Elements stripe={stripePromise}>
-                <CheckoutForm details={details}></CheckoutForm>
+                <CheckoutForm refetch={refetch} details={details}></CheckoutForm>
             </Elements>
         </div>
     );
 };
 
 PaymentModal.propTypes = {
-    details: PropTypes.object
+    details: PropTypes.object,
+    refetch: PropTypes.func
 }
 
 export default PaymentModal;

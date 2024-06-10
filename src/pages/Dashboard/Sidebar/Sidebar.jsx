@@ -1,27 +1,35 @@
 import { RiMenuFill } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 import useAdmin from "../../../hooks/useAdmin";
+import { FaUsers } from "react-icons/fa6";
+import { MdPets } from "react-icons/md";
+import { FaDonate } from "react-icons/fa";
+import { MdCampaign } from "react-icons/md";
+import { FiGitPullRequest } from "react-icons/fi";
+import { CgProfile } from "react-icons/cg";
 
 const Sidebar = () => {
     const [isAdmin] = useAdmin();
     const links = <>
         {isAdmin ? <>
-            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/users'>Users</NavLink>
-            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/allPets'>All Pets</NavLink>
-            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/allDonations'>All Donations</NavLink>
-            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/addPet'>Add a pet</NavLink>
-            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/addedPets'>My added pets</NavLink>
-            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/addDonations'>Create Donation Campaign</NavLink>
-            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/myDonationCampaigns'>My donation campaigns</NavLink>
-            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/myDonations'>My donations</NavLink>
-            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/adoptionRequest'>Adoption Request</NavLink>        </> :
+            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/users'><p className="flex items-center gap-2"><FaUsers></FaUsers>Users</p></NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/allPets'><p className="flex items-center gap-2"><MdPets></MdPets>All Pets</p></NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/allDonations'><p className="flex items-center gap-2"><FaDonate></FaDonate>All Donations</p></NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/addPet'><p className="flex items-center gap-2"><MdPets></MdPets>Add a Pet</p></NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/addedPets'><p className="flex items-center gap-2"><MdPets></MdPets>My Added Pets</p></NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/addDonations'><p className="flex items-center gap-2"><MdCampaign className="text-4xl"></MdCampaign>Create Donation Campaign</p></NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/myDonationCampaigns'><p className="flex items-center gap-2"><FaDonate></FaDonate>My Donation Campaigns</p></NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/myDonations'><p className="flex items-center gap-2"><FaDonate></FaDonate>My Donations</p></NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/adoptionRequest'><p className="flex items-center gap-2"><FiGitPullRequest></FiGitPullRequest>Adoption Request</p></NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/profile'><p className="flex items-center gap-2"><CgProfile></CgProfile>Profile</p></NavLink>        </> :
             <>
-                <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/addPet'>Add a pet</NavLink>
-                <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/addedPets'>My added pets</NavLink>
-                <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/addDonations'>Create Donation Campaign</NavLink>
-                <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/myDonationCampaigns'>My donation campaigns</NavLink>
-                <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/myDonations'>My donations</NavLink>
-                <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/adoptionRequest'>Adoption Request</NavLink>
+                <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/addPet'><p className="flex items-center gap-2"><MdPets></MdPets>Add a Pet</p></NavLink>
+                <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/addedPets'><p className="flex items-center gap-2"><MdPets></MdPets>My Added Pets</p></NavLink>
+                <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/addDonations'><p className="flex items-center gap-2"><MdCampaign className="text-4xl"></MdCampaign>Create Donation Campaign</p></NavLink>
+                <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/myDonationCampaigns'><p className="flex items-center gap-2"><FaDonate></FaDonate>My Donation Campaigns</p></NavLink>
+                <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/myDonations'><p className="flex items-center gap-2"><FaDonate></FaDonate>My Donations</p></NavLink>
+                <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/adoptionRequest'><p className="flex items-center gap-2"><FiGitPullRequest></FiGitPullRequest>Adoption Request</p></NavLink>
+                <NavLink className={({ isActive }) => isActive ? 'p-2 bg-[#FF720F] text-white dark:text-white' : 'text-black dark:text-white'} to='/dashboard/profile'><p className="flex items-center gap-2"><CgProfile></CgProfile>Profile</p></NavLink>
             </>}
     </>
     return (
@@ -53,7 +61,7 @@ const Sidebar = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-52 min-h-screen space-y-4 bg-base-200 text-black dark:bg-black text-lg">
+                    <ul className="menu p-4 w-52 space-y-4 bg-base-200 text-black dark:bg-black text-lg min-h-screen">
                         {isAdmin && <p className="text-center text-[#FF720F] text-xl">Admin</p>}
                         {!isAdmin && <p className="text-center text-[#FF720F] text-xl">User</p>}
                         {/* Sidebar content here */}

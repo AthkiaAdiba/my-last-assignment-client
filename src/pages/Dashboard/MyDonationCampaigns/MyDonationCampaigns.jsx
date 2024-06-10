@@ -9,13 +9,16 @@ import { FaPlay } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 import { toast } from "react-toastify";
 import ViewDonatorsModal from "../../../components/ViewDonatorsModal/ViewDonatorsModal";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import { Helmet } from "react-helmet-async";
 
 
 const MyDonationCampaigns = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const { data: myCampaigns = [], refetch } = useQuery({
+    const { data: myCampaigns = [], refetch, isLoading } = useQuery({
         queryKey: ['myCampaigns'],
         queryFn: async () => {
             const res = await axiosSecure.get(`/campaignCards/${user?.email}`)
@@ -53,8 +56,13 @@ const MyDonationCampaigns = () => {
             })
     }
 
+    if (isLoading) return <div className="mt-28"><Skeleton count={5} /></div>
+
     return (
         <div className="pt-8 lg:pt-32 px-[2%] pb-20">
+            <Helmet>
+                <title>My Donation Campaigns | Pets</title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

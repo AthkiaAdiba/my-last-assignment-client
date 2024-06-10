@@ -21,7 +21,7 @@ const ViewDonatorsModal = ({ petId }) => {
             <div>
                 {
                     donators.map((donator, index) => <div key={donator._id}
-                        className="flex justify-between">
+                        className="flex justify-between dark:text-black">
 
                         <div className="flex gap-3">
                             <p>{index + 1}</p>

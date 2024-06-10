@@ -5,12 +5,15 @@ import { MdDelete } from "react-icons/md";
 import { TbStatusChange } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import { Helmet } from "react-helmet-async";
 
 
 const AllPets = () => {
     const axiosSecure = useAxiosSecure();
 
-    const { data: allPets = [], refetch } = useQuery({
+    const { data: allPets = [], refetch, isLoading } = useQuery({
         queryKey: ['allpets'],
         queryFn: async () => {
             const res = await axiosSecure.get('/allPets')
@@ -64,9 +67,12 @@ const AllPets = () => {
             })
     }
 
-
+    if (isLoading) return <div className="mt-28"><Skeleton count={5} /></div>
     return (
-        <div className="mt-28 pb-16">
+        <div className="mt-7 lg:mt-28 pb-16">
+            <Helmet>
+                <title>All Pets | Pets</title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

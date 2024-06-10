@@ -3,6 +3,7 @@ import CampaignCard from "../../components/CampaignCard/CampaignCard";
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { InView } from "react-intersection-observer";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -29,6 +30,9 @@ const DonationCampaigns = () => {
 
   return (
     <div className="px-[5%] pt-28 lg:pt-36 pb-24 dark:bg-black">
+      <Helmet>
+        <title>Donation Campaigns | Pets</title>
+      </Helmet>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {
           campaignCards.map(campaignCard => <CampaignCard key={campaignCard._id} campaignCard={campaignCard}></CampaignCard>)
@@ -43,7 +47,8 @@ const DonationCampaigns = () => {
           }
         }}
       >
-        <div className="py-10 text-center mb-5">Loading...</div>
+        {isLoading ? <div className="py-10 text-center dark:text-white mb-5">Loading...</div> :
+          <div></div>}
       </InView>
     </div>
   );

@@ -63,7 +63,7 @@ const Register = () => {
     }
 
     return (
-        <div className="mt-16 pt-10 pb-10 dark:bg-black">
+        <div className="mt-3 pt-10 pb-10 dark:bg-black">
             <div className="w-full font-forum shadow-lg mx-auto max-w-md p-8 space-y-3 rounded-none bg-base-100 dark:bg-black text-gray-100">
                 <h1 className="text-2xl font-bold text-center text-black dark:text-white">Register</h1>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

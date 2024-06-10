@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import { useState } from "react";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -68,6 +69,9 @@ const AddDonations = () => {
     }
     return (
         <div className="font-barlow mb-10 lg:mb-24 py-16 px-3 lg:px-24 mt-0 lg:mt-20">
+            <Helmet>
+                <title>Create Donation Campaign | Pets</title>
+            </Helmet>
             <h2 className="text-4xl font-extrabold text-center mb-5 text-black dark:text-white">Add A Campaign</h2>
             <form onSubmit={handleAddDonations}>
                 {/* pet Name and maximum account row */}

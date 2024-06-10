@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import PropTypes from 'prop-types';
 
 
-const CheckoutForm = ({details}) => {
+const CheckoutForm = ({details, refetch}) => {
     const {pet_name, pet_image, _id} = details;
 
     const stripe = useStripe();
@@ -92,6 +92,7 @@ const CheckoutForm = ({details}) => {
                 // increase donated amount
                 if(res.data.insertedId){
                     const donationRes = await axiosSecure.patch(`/donation-increase/${_id}`, {donationAmount})
+                    refetch();
                     console.log(donationRes.data)
                 }
             }
@@ -132,7 +133,8 @@ const CheckoutForm = ({details}) => {
 };
 
 CheckoutForm.propTypes = {
-    details: PropTypes.object
+    details: PropTypes.object,
+    refetch: PropTypes.func
 }
 
 export default CheckoutForm;

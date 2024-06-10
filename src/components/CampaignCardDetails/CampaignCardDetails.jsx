@@ -5,6 +5,7 @@ import PaymentModal from "../PaymentModal/PaymentModal";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import RecomendedCampaignCards from "../../pages/Dashboard/RecomendedCampaignCards/RecomendedCampaignCards";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -12,7 +13,7 @@ const CampaignCardDetails = () => {
     const { id } = useParams();
     const axiosSecure = useAxiosSecure();
 
-    const { data: details = {} } = useQuery({
+    const { data: details = {}, refetch } = useQuery({
         queryKey: ['details', id],
         queryFn: async () => {
             const res = await axiosSecure.get(`/campaignCard-details/${id}`)
@@ -38,6 +39,10 @@ const CampaignCardDetails = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Donation Campaign Details | Pets</title>
+            </Helmet>
+
             <div className="px-[3%] lg:px-[25%] pt-28 lg:pt-36 pb-24 dark:bg-black">
                 <div className="card bg-base-100 dark:bg-black shadow-xl">
                     <figure><img className="w-full h-[300px] lg:h-[450px]" src={details.pet_image} alt="Shoes" /></figure>
@@ -58,7 +63,7 @@ const CampaignCardDetails = () => {
                             <dialog id="my_modal_1" className="modal">
                                 <div className="modal-box">
                                     <h2 className="mb-3 text-center text-4xl font-bold text-[#FF720F]"></h2>
-                                    <PaymentModal details={details}></PaymentModal>
+                                    <PaymentModal refetch={refetch} details={details}></PaymentModal>
                                     <div className="modal-action">
                                         <form method="dialog">
                                             {/* if there is a button in form, it will close the modal */}

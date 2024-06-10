@@ -2,13 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import { RiRefundLine } from "react-icons/ri";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import { Helmet } from "react-helmet-async";
 
 
 const MyDonations = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure()
 
-    const { data: myDonations = [], refetch } = useQuery({
+    const { data: myDonations = [], refetch, isLoading } = useQuery({
         queryKey: ['myDonations', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/mtDonations/${user?.email}`)
@@ -24,8 +27,13 @@ const MyDonations = () => {
 
     }
 
+    if (isLoading) return <div className="mt-28"><Skeleton count={5} /></div>
+
     return (
         <div className="pt-8 lg:pt-32 px-[2%] pb-20">
+            <Helmet>
+                <title>My Donations | Pets</title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

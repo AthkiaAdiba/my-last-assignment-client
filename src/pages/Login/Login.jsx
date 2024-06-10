@@ -105,7 +105,7 @@ const Login = () => {
     }
 
     return (
-        <div className="pt-24 pb-16 dark:bg-black">
+        <div className="pt-3 pb-16 dark:bg-black">
             <div className="bg-base-100 dark:bg-black shadow-lg w-full font-forum mx-auto max-w-md p-8 space-y-3 rounded-none text-black">
                 <h1 className="text-4xl font-bold text-center text-black dark:text-white">Login</h1>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

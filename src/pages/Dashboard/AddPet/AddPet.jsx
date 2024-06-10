@@ -9,6 +9,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import useAuth from '../../../hooks/useAuth';
+import { Helmet } from 'react-helmet-async';
 
 
 const options = [
@@ -26,7 +27,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const AddPet = () => {
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
-    const {user} = useAuth();
+    const { user } = useAuth();
     const [selectedOption, setSelectedOption] = useState('');
     const [selectedOptionError, setSelectedOptionError] = useState('');
     const [editorError, setEditorError] = useState('');
@@ -104,6 +105,9 @@ const AddPet = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Add a Pet | Pets</title>
+            </Helmet>
             <div className="bg-base-100 dark:bg-black shadow-2xl font-barlow mb-16 py-16 px-3 lg:px-24 lg:mt-16">
                 <h2 className="text-4xl font-extrabold text-center mb-5 dark:text-white">Add a Pet</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -171,7 +175,7 @@ const AddPet = () => {
                                 <span className="label-text font-medium text-xl text-black dark:text-white">Pick a Date:</span>
                             </label>
                             <DatePicker className=" ml-1 p-2 border-2 rounded-md text-black text-xl"
-                            selected={startDate} onChange={(date) => setStartDate(date)} />
+                                selected={startDate} onChange={(date) => setStartDate(date)} />
                         </div>
                         <div className="form-control md:w-1/2 ml-0 md:ml-4 lg:ml-4">
                             <label className="label">

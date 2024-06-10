@@ -4,6 +4,7 @@ import UnadoptedPet from "../../components/UnadoptedPet/UnadoptedPet";
 import { IoIosArrowDown } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { InView } from "react-intersection-observer";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -31,7 +32,7 @@ const PetListing = () => {
     }, [limit])
 
     const categoryArray = ['dog', 'cat', 'rabbit', 'bird', 'fish', 'horse']
-    
+
     console.log(unadoptedPets)
 
     // handle search
@@ -47,16 +48,19 @@ const PetListing = () => {
     const handleCategorySelect = category => {
         console.log(category)
         setCategory(category);
-        
+
     };
 
 
     return (
         <div className="px-[5%] pt-28 lg:pt-36 pb-24 dark:bg-black">
+            <Helmet>
+                <title>Pet Listing | Pets</title>
+            </Helmet>
             {/* dropdown and search field */}
             <div className="flex flex-col lg:flex-row justify-center items-center mb-10">
                 <form onSubmit={handleSearch} className="join">
-                    <input type="text" name="search" className="input input-bordered join-item dark:bg-black dark:border-2" placeholder="Search" />
+                    <input type="text" name="search" className="input input-bordered join-item dark:bg-black dark:text-white dark:border-2" placeholder="Search" />
                     <button type="submit" className="btn join-item bg-[#FF720F] text-white">Search</button>
                 </form>
                 <div className="text-center">
@@ -65,8 +69,8 @@ const PetListing = () => {
                         <ul className="p-2 shadow menu dropdown-content z-[1] bg-white rounded-box w-52 dark:bg-black dark:text-white">
                             {
                                 categoryArray.map((cate, index) => <li key={index}
-                                onClick={() => handleCategorySelect(cate)}
-                                 className="hover:bg-[#FF720F] hover:text-white rounded-lg"><a>{cate}</a></li>)
+                                    onClick={() => handleCategorySelect(cate)}
+                                    className="hover:bg-[#FF720F] hover:text-white rounded-lg"><a>{cate}</a></li>)
                             }
                         </ul>
                     </details>
@@ -86,7 +90,8 @@ const PetListing = () => {
                     }
                 }}
             >
-                <div className="py-10 text-center mb-5">Loading...</div>
+                {isLoading ? <div className="py-10 text-center dark:text-white mb-5">Loading...</div> :
+                    <div></div>}
             </InView>
         </div>
     );

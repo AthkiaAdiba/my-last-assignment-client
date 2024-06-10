@@ -2,13 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import { Helmet } from "react-helmet-async";
 
 
 const AdoptionRequest = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const { data: adoptionRequests = [], refetch } = useQuery({
+    const { data: adoptionRequests = [], refetch, isLoading } = useQuery({
         queryKey: ['adoptionRequests', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/adoptionRequests/${user.email}`)
@@ -45,8 +48,13 @@ const AdoptionRequest = () => {
             })
     }
 
+    if (isLoading) return <div className="mt-28"><Skeleton count={5} /></div>
+
     return (
         <div className="mt-0 lg:mt-28">
+            <Helmet>
+                <title>Adoption Request | Pets</title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

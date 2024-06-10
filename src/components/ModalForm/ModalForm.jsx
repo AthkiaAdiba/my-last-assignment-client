@@ -35,7 +35,7 @@ const ModalForm = ({ pet }) => {
                     form.reset();
                     Swal.fire({
                         title: 'Success!',
-                        text: 'You have adopted pet Successfully',
+                        text: 'Your request is saved Successfully',
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })

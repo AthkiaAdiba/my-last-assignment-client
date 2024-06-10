@@ -4,6 +4,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import ModalForm from "../ModalForm/ModalForm";
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -25,6 +26,9 @@ const UnadoptedPetDetails = () => {
     }
     return (
         <div className="px-[3%] lg:px-[25%] pt-28 lg:pt-36 pb-24 dark:bg-black">
+            <Helmet>
+                <title>Pet Listing Details | Pets</title>
+            </Helmet>
             <div className="card bg-base-100 dark:bg-black shadow-xl">
                 <figure><img className="w-full h-[300px] lg:h-[450px]" src={pet.pet_image || <Skeleton />} alt="Shoes" /></figure>
                 <div className="card-body">

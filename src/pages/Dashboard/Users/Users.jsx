@@ -2,13 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { RiAdminFill } from "react-icons/ri";
 import Swal from "sweetalert2";
+import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton from "react-loading-skeleton";
+import { Helmet } from "react-helmet-async";
+
 
 
 // {new Date(oneRow.date).toLocaleDateString()}
 const Users = () => {
     const axiosSecure = useAxiosSecure();
 
-    const { data: users = [], refetch } = useQuery({
+    const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure.get('/users')
@@ -33,8 +37,13 @@ const Users = () => {
             })
     }
 
+    if (isLoading) return <div className="mt-28"><Skeleton count={5} /></div>
+
     return (
         <div className="pt-8 lg:pt-32 px-[5%] pb-20 dark:bg-black">
+            <Helmet>
+                <title>Users | Pets</title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
